@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeri Sekolah</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/galeri.css">
+</head>
+<body>
+
+  <!-- Section Galeri -->
+  <div class="container d-flex justify-content-center align-items-center mb-5 mt-5">
+    <h1 class="garis"></h1>
+    <h1><a href="#" class="text-white text-decoration-none teks-judul pb-1 pt-1 ps-2 pe-2 ms-3">GALERI</a></h1>
+    <h1><a href="#" class="text-warning text-decoration-none teks-judul bentuk fw-bold ps-1 pe-3 pt-3 pb-3 me-3 border-pulosari">TERBARU</a></h1>
+    <h1 class="garis"></h1>
+  </div>
+
+  <div class="container my-5">
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Upacara Bendera</div>
+          <img src="https://picsum.photos/600/400?random=1" alt="Upacara Bendera">
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Kegiatan Belajar</div>
+          <img src="https://picsum.photos/600/400?random=2" alt="Kegiatan Belajar">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Lomba Sekolah</div>
+          <img src="https://picsum.photos/600/400?random=3" alt="Lomba Sekolah">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Lomba Sekolah</div>
+          <img src="https://picsum.photos/600/400?random=3" alt="Lomba Sekolah">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Lomba Sekolah</div>
+          <img src="https://picsum.photos/600/400?random=3" alt="Lomba Sekolah">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <div class="gallery-title">Lomba Sekolah</div>
+          <img src="https://picsum.photos/600/400?random=3" alt="Lomba Sekolah">
+        </div>
+      </div>
+
+      <!-- tambahkan card lain seperti ini -->
+      
+      <!-- Pagination -->
+      <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center" id="pagination">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" id="prevBtn">Sebelumnya</a>
+          </li>
+          <!-- Nomor halaman via JS -->
+          <li class="page-item">
+            <a class="page-link" href="#" id="nextBtn">Selanjutnya</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Modal Gambar -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="modalTitle"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="modalImage" class="modal-img img-fluid" src="" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Pagination
+    const pagination = document.getElementById("pagination");
+    const prevBtn = document.getElementById("prevBtn").parentElement;
+    const nextBtn = document.getElementById("nextBtn").parentElement;
+
+    let currentPage = 1;
+    let totalPages = 30; 
+    let windowSize = 5;  
+
+    function renderPagination() {
+      [...pagination.querySelectorAll(".page-item.number")].forEach(el => el.remove());
+      let start = Math.floor((currentPage - 1) / windowSize) * windowSize + 1;
+      let end = Math.min(start + windowSize - 1, totalPages);
+      for (let i = start; i <= end; i++) {
+        let li = document.createElement("li");
+        li.className = "page-item number " + (i === currentPage ? "active" : "");
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.addEventListener("click", (e) => {
+          e.preventDefault();
+          currentPage = i;
+          renderPagination();
+        });
+        pagination.insertBefore(li, nextBtn);
+      }
+      prevBtn.classList.toggle("disabled", currentPage === 1);
+      nextBtn.classList.toggle("disabled", currentPage === totalPages);
+    }
+    document.getElementById("prevBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage > 1) { currentPage--; renderPagination(); }
+    });
+    document.getElementById("nextBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (currentPage < totalPages) { currentPage++; renderPagination(); }
+    });
+    renderPagination();
+
+    // Modal gambar
+    const galleryCards = document.querySelectorAll(".gallery-card");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+
+    galleryCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const imgSrc = card.querySelector("img").src.replace("/600/400", "/1200/800");
+        const imgTitle = card.querySelector(".gallery-title").innerText;
+        modalImage.src = imgSrc;
+        modalTitle.textContent = imgTitle;
+      });
+    });
+  </script>
+</body>
+</html>

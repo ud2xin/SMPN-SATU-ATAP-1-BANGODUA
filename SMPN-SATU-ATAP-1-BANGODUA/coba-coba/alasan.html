@@ -1,0 +1,154 @@
+<!doctype html> 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Footer Responsif</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    .kenapa {
+      margin-top: 40px;
+      padding: 0 15px; /* Tambah padding agar tidak mepet */
+    }
+
+    .kenapa h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 36px;
+      font-weight: bold;
+      color: #0070C0;
+      text-align: center;
+    }
+
+    .kenapa p.subjudul {
+      font-size: 18px;
+      color: #756C6C;
+      margin-top: 5px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 0 20px 40px;
+      max-width: 1200px; /* Biar tidak melebar terlalu jauh */
+      margin: auto;
+    }
+
+    .card {
+      border: 3px solid #0070C0 !important;
+      border-radius: 10px;
+      padding: 20px;
+      width: 330px;
+      text-align: center;
+      box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+      background: #fff;
+    }
+
+    .image-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #0070C0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+    }
+
+    .image-wrapper img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .kenapa h2 {
+        font-size: 28px;
+      }
+      .kenapa p.subjudul {
+        font-size: 16px;
+      }
+      .card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .kenapa {
+        padding: 0 10px;
+      }
+      .kenapa h2 {
+        font-size: 22px;
+      }
+      .kenapa p.subjudul {
+        font-size: 14px;
+      }
+      .card h3 {
+        font-size: 14px;
+      }
+      .card p {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="kenapa">
+    <h2>MENGAPA MEMILIH SMPN SATU ATAP 1 BANGODUA?</h2>
+    <p class="subjudul">
+      Pendidikan kejuruan terbaik kami didukung oleh lingkungan belajar <br>
+      yang kondusif dan instruktur berkompeten.
+    </p>
+
+    <div class="container">
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="assets/Sikh Guru Avatar.png" alt="Guru Berpengalaman">
+        </div>
+        <h3>GURU BERPENGALAMAN</h3>
+        <p>Tenaga pengajar kami memiliki latar belakang pendidikan dan pengalaman mengajar yang kuat, siap membimbing siswa menuju kesuksesan</p>
+      </div>
+
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="assets/Sikh Guru Avatar.png" alt="Metode Mengajar Cerdas">
+        </div>
+        <h3>METODE MENGAJAR CERDAS</h3>
+        <p>Kami menerapkan pendekatan pembelajaran inovatif dan interaktif yang mudah dipahami serta relevan dengan kebutuhan industri</p>
+      </div>
+
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="assets/Sikh Guru Avatar.png" alt="Lingkungan Positif">
+        </div>
+        <h3>LINGKUNGAN POSITIF</h3>
+        <p>Sekolah kami menciptakan suasana belajar yang nyaman, aman, dan mendukung pertumbuhan karakter serta kreativitas siswa</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

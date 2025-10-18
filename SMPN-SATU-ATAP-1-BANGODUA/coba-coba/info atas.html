@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Header</title>
+  <style>
+    .informasi {
+      width: 100%;
+      background-color: #0A3566;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-sizing: border-box;
+    }
+
+    .kiri-group,
+    .kanan-group {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .kiri-group div,
+    .kanan-group div {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: 0.3s;
+    }
+
+    .kiri-group img,
+    .kanan-group img {
+      height: 20px;
+      width: 20px;
+    }
+
+    .kanan-group img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+
+    .informasi a {
+      text-decoration: none;
+      color: aliceblue;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .informasi a:hover {
+      color: orange;
+    }
+
+    .kiri-group div:hover,
+    .kanan-group div:hover {
+      transform: scale(1.05);
+    }
+
+    /* Tablet (≤768px) */
+    @media (max-width: 768px) {
+      .informasi {
+        padding: 5px 8px;
+      }
+
+      .kiri-group,
+      .kanan-group {
+        gap: 12px;
+      }
+
+      .kiri-group img,
+      .kanan-group img {
+        height: 15px;
+        width: 15px;
+      }
+
+      .kanan-group img {
+        height: 22px;
+        width: 22px;
+      }
+
+      .informasi a {
+        font-size: 12px;
+      }
+    }
+
+    /* HP kecil (≤480px) */
+    @media (max-width: 480px) {
+      .informasi {
+        padding: 4px 6px;
+      }
+
+      .kiri-group,
+      .kanan-group {
+        gap: 8px;
+      }
+
+      .kiri-group img,
+      .kanan-group img {
+        height: 12px;
+        width: 12px;
+      }
+
+      .kanan-group img {
+        height: 18px;
+        width: 18px;
+      }
+
+      .informasi a {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="informasi">
+    <div class="kiri-group">
+      <div><img src="assets/info.png" alt=""><a href="#">Informasi Pendaftaran</a></div>
+      <div><img src="assets/phone-call.png" alt=""><a href="#">082320249895</a></div>
+      <div><img src="assets/mail.png" alt=""><a href="#">kacangdong2@gmail.com</a></div>
+    </div>
+    <div class="kanan-group">
+      <div><img src="assets/Aiman.png" alt=""><a href="#">Login</a></div>
+    </div>
+  </div>
+</body>
+</html>

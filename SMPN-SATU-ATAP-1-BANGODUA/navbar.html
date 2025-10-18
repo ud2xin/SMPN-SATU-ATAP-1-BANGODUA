@@ -1,0 +1,42 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Responsive Navbar</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-xl">
+        <!-- Logo + Brand -->
+        <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+          <img class="logo me-2" src="assets/Logo Satap.png" alt="Logo">
+          <span class="size-logo">SMPN STAP 1 BANGODUA</span>
+        </a>
+
+        <!-- Button toggle di kanan -->
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav gap-3 text-center">
+            <a class="nav-link text-white hover-menu" href="index.html">BERANDA</a>
+            <a class="nav-link text-white hover-menu" href="guru.html">GURU DAN KARYAWAN</a>
+            <a class="nav-link text-white hover-menu" href="berita.html">BERITA</a>
+            <a class="nav-link text-white hover-menu" href="galeri.html">GALERI</a>
+            <a class="nav-link text-white hover-menu" href="#">KARYA</a>
+            <a class="nav-link text-white hover-menu" href="#">SPMB</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

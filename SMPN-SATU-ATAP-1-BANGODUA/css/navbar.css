@@ -1,0 +1,36 @@
+nav {
+    background-color: #0A3566;
+}
+
+.logo {
+    max-width: 40px; /* lebih kecil */
+}
+
+.size-logo {
+    font-size: 20px; /* teks judul lebih kecil */
+}
+
+  /* hamburger button */
+.navbar-toggler {
+    border: 1px solid white; /* outline putih */
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* ikon putih */
+}
+
+.nav-link.hover-menu {
+    display: inline-block;              /* biar bisa di-scale */
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link.hover-menu:hover {
+    transform: scale(1.1);
+    color: orange !important; 
+}
+
+@media (max-width: 768px) {
+    .size-logo {
+        font-size: 16px;
+    }
+}

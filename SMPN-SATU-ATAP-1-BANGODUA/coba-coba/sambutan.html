@@ -1,0 +1,135 @@
+<!doctype html> 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Footer Responsif</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      padding: 0 20px; /* Tambah margin kanan-kiri */
+    }
+
+    .text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .text h1 {
+      color: #0A5DB2;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .text h2 {
+      color: #0A5DB2;
+      font-size: 15px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .text p {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+    }
+
+    .signature {
+      margin-top: 20px;
+    }
+
+    .signature strong {
+      color: #0A5DB2;
+      font-size: 1.1rem;
+    }
+
+    .image {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image img {
+      width: 100%;
+      max-width: 476px;
+      height: auto;
+      border-radius: 12px;
+      background-color: #5e8497;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+      }
+
+      .text h1 {
+        font-size: 1.5rem;
+      }
+
+      .text p {
+        font-size: 0.95rem;
+      }
+
+      .signature strong {
+        font-size: 1rem;
+      }
+
+      .image img {
+        max-width: 320px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .text h1 {
+        font-size: 1.3rem;
+      }
+
+      .text p {
+        font-size: 0.9rem;
+      }
+
+      .signature strong {
+        font-size: 0.95rem;
+      }
+
+      .image img {
+        max-width: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5 mb-4">
+    <div class="text">
+      <h1 class="stix-two-text-bold">Selamat Datang Di Website Resmi SMPN Satu Atap 1 Bangodua</h1>
+      <p class="stix-two-text-light">Kami dengan bangga mempersembahkan platform ini sebagai wujud komitmen kami dalam memberikan informasi dan pengalaman terbaik kepada siswa, orang tua, dan seluruh komunitas sekolah.</p>
+      <p class="stix-two-text-light">Website ini dirancang untuk memberikan akses mudah dan cepat terhadap berbagai informasi terkait kegiatan sekolah, program akademik, prestasi, dan berbagai informasi penting lainnya.</p>
+      <p class="stix-two-text-light">SMPN Satu Atap 1 Bangodua selalu berkomitmen untuk memberikan pendidikan berkualitas, lingkungan belajar yang inspiratif, serta mendukung perkembangan potensi siswa dalam segala aspek. Kami berharap dengan adanya website ini, kami dapat memperkuat sinergi antara sekolah, siswa, orang tua, dan seluruh stakeholder dalam memajukan pendidikan di era digital ini.</p>
+      <p class="stix-two-text-light">Terima kasih atas kunjungan Anda dan mari kita bersama-sama mewujudkan visi dan misi SMPN Satu Atap 1 Bangodua untuk mencetak generasi penerus yang cerdas, berdaya saing, dan berakhlak mulia.</p>
+      <div class="signature">
+        <p class="stix-two-text-light">Salam hangat,</p>
+        <strong class="stix-two-text-bold">Ely Faridah, S.Pd</strong>
+        <h2>Kepala sekolah SMPN Satu Atap 1 Bangodua</h2>
+      </div>
+    </div>
+    <div class="image">
+      <img src="assets/Aiman.png" alt="Foto Kepala Sekolah" />
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

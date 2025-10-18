@@ -1,0 +1,63 @@
+body {
+      background: #fff; /* putih bersih */
+      color: #000; /* teks hitam */
+    }
+    .portrait-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      background: #fff;
+      transition: transform 0.3s ease;
+    }
+    .portrait-card:hover {
+      transform: scale(1.05);
+    }
+    .portrait-card img {
+      width: 100%;
+      aspect-ratio: 3/4; /* bikin ukuran tegak proporsi pas foto */
+      object-fit: cover;
+      border-bottom: 2px solid #ffc107;
+    }
+    .portrait-title {
+      padding: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      background: #f8f9fa;
+    }
+    /* trik agar 5 kolom pas */
+    .col-5ths {
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+
+    .portrait-role {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #0A3566;
+      color: #fff;
+      padding: 4px 10px;
+      font-size: 0.9rem;
+      border-radius: 6px;
+    }    
+    
+    @media (max-width: 992px) { /* tablet */
+      .col-5ths {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
+    }
+    @media (max-width: 768px) { /* hp sedang */
+      .col-5ths {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+    }
+    @media (max-width: 576px) { /* hp kecil */
+      .col-5ths {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
