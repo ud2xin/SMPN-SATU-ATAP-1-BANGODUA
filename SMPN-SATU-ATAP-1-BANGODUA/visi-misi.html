@@ -3,41 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visi & Misi - SMPN SATU ATAP 1 BANGODUA</title>
+    <title>Visi dan Misi - SMPN SATAP 1 BANGODUA</title>
+    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/visi-misi.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>SMPN SATU ATAP 1 BANGODUA</h1>
-        <nav>
-        <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="sejarah.html">Sejarah</a></li>
-            <li><a href="visi-misi.html" class="active">Visi & Misi</a></li>
-            <li><a href="struktur.html">Struktur</a></li>
-            <li><a href="ekstrakurikuler.html">Ekstrakurikuler</a></li>
-            <li><a href="prestasi.html">Prestasi</a></li>
-            <li><a href="lokasi.html">Lokasi</a></li>
-        </ul>
-        </nav>
-    </header>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-xl">
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+                <img class="logo me-2" src="assets/Logo Satap.png" alt="Logo">
+                <span class="size-logo">SMPN SATU ATAP 1 BANGODUA</span>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav gap-3 text-center">
+                    <a class="nav-link text-white hover-menu" href="index.html">BERANDA</a>
+                    <a class="nav-link text-white hover-menu" href="guru.html">GURU DAN KARYAWAN</a>
+                    <a class="nav-link text-white hover-menu" href="berita.html">BERITA</a>
+                    <a class="nav-link text-white hover-menu" href="galeri.html">GALERI</a>
+                    <a class="nav-link text-white hover-menu" href="karya.html">KARYA</a>  
+                    <a class="nav-link text-white hover-menu" href="#">SPMB</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main>
-        <section class="content">
-        <h2>Visi</h2>
-        <p>"Menjadi sekolah yang unggul dalam prestasi, berakhlak mulia, dan peduli lingkungan."</p>
+        <h1 style="margin-bottom: 0px; font-weight: bolder;">Visi dan Misi</h1>
 
-        <h2>Misi</h2>
-        <ul>
-            <li>Meningkatkan kualitas pembelajaran berbasis karakter dan teknologi.</li>
-            <li>Menumbuhkan semangat berprestasi dalam bidang akademik maupun non-akademik.</li>
-            <li>Mewujudkan lingkungan sekolah yang bersih, hijau, dan sehat.</li>
-        </ul>
+        <section class="visi-section">
+            <div class="visi-content">
+                <img src="assets/visi.svg" alt="Gambar Visi Sekolah" class="visi-image">
+                <div class="visi-text">
+                    <h2>🎯 Visi</h2>
+                    <p>
+                        “Terwujudnya peserta didik yang beriman, berakhlak mulia, berilmu, berprestasi, berkarakter, serta peduli terhadap lingkungan dan sesama.”
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="misi-section">
+            <div class="misi-content">
+                <div class="misi-text">
+                    <h2>📜 Misi</h2>
+                    <ul>
+                        <li>Menumbuhkan penghayatan dan pengamalan nilai-nilai keagamaan dalam kehidupan sehari-hari.</li>
+                        <li>Meningkatkan semangat belajar untuk mencapai prestasi akademik dan non-akademik.</li>
+                        <li>Membentuk karakter disiplin, jujur, tanggung jawab, dan gotong royong.</li>
+                        <li>Meningkatkan kemampuan literasi, numerasi, dan digital sesuai perkembangan zaman.</li>
+                        <li>Menanamkan rasa cinta lingkungan melalui kegiatan sekolah yang berwawasan hijau.</li>
+                        <li>Mendorong peserta didik untuk berpartisipasi aktif dalam kegiatan sosial dan budaya.</li>
+                    </ul>
+                </div>
+                <img src="assets/misi.svg" alt="Gambar Misi Sekolah" class="visi-image">
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 SMPN SATU ATAP 1 BANGODUA. All rights reserved.</p>
+    <footer style="background-color: #0A3566; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2023 SMPN STAP 1 BANGODUA. Semua hak dilindungi.</p>
+        <p>Alamat: Jl. Contoh, Bangodua | Email: info@smpstap1bangodua.com | Telepon: (021) 1234567</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

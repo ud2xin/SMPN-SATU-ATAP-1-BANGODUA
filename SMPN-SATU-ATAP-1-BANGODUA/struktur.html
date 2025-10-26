@@ -1,26 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halaman Gambar 1200px</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .big-image {
-      width: 1200px;       /* lebar tetap 1200px */
-      max-width: 100%;     /* tetap responsif di layar kecil */
-      margin: 20px auto;  /* auto = center horizontal, 150px atas-bawah */
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi - SMPN SATU ATAP 1 BANGODUA</title>
+    <link rel="stylesheet" href="css/navbar.css">  
+    <link rel="stylesheet" href="css/struktur.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-light">
-  <div class="container">
-    <img src="assets/gambar1.jpeg" alt="Gambar Besar" class="big-image img-fluid">
-  </div>
+<body>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-xl">
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+                <img class="logo me-2" src="assets/Logo Satap.png" alt="Logo">
+                <span class="size-logo">SMPN SATU ATAP 1 BANGODUA</span>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav gap-3 text-center">
+                    <a class="nav-link text-white hover-menu" href="index.html">BERANDA</a>
+                    <a class="nav-link text-white hover-menu" href="guru.html">GURU DAN KARYAWAN</a>
+                    <a class="nav-link text-white hover-menu" href="berita.html">BERITA</a>
+                    <a class="nav-link text-white hover-menu" href="galeri.html">GALERI</a>
+                    <a class="nav-link text-white hover-menu" href="karya.html">KARYA</a>
+                    <a class="nav-link text-white hover-menu" href="#">SPMB</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1 style="margin-bottom: 40px; font-weight: bolder;">Struktur Organisasi</h1>
+
+        <section class="struktur-section">
+            <div class="struktur-content">
+                <img src="assets/struktur-organisasi." alt="Struktur Organisasi Sekolah" class="struktur-image">
+                <div class="struktur-text">
+                    <h2>🏫 Struktur Organisasi SMPN SATU ATAP 1 BANGODUA</h2>
+                    <p>Struktur organisasi SMPN SATU ATAP 1 BANGODUA dirancang untuk mendukung penyelenggaraan kegiatan pendidikan secara efektif dan efisien. Setiap elemen dalam struktur memiliki peran dan tanggung jawab yang saling berkaitan untuk mencapai tujuan sekolah.</p>
+                    <p>Di bawah kepemimpinan kepala sekolah, terdapat wakil kepala sekolah, guru, staf tata usaha, dan pembina kegiatan yang bekerja sama dalam mewujudkan visi dan misi sekolah. Struktur ini juga memastikan komunikasi dan koordinasi antar bagian berjalan dengan baik.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="struktur-section">
+            <div class="struktur-detail">
+                <h3>📋 Susunan Organisasi:</h3>
+                <ul>
+                    <li><strong>Kepala Sekolah:</strong> Ibu Sri Wahyuni, S.Pd</li>
+                    <li><strong>Wakil Kepala Sekolah:</strong> Bapak Ahmad Fauzi, S.Pd</li>
+                    <li><strong>Guru Bidang Akademik:</strong> Ibu Dewi Lestari, S.Pd</li>
+                    <li><strong>Guru BK:</strong> Bapak Eko Santoso, S.Pd</li>
+                    <li><strong>Staf Tata Usaha:</strong> Ibu Ratna Widya</li>
+                    <li><strong>Koordinator Kesiswaan:</strong> Bapak Budi Haryono</li>
+                    <li><strong>Koordinator Sarana dan Prasarana:</strong> Ibu Rina Agustina</li>
+                </ul>
+
+                <p>Dengan susunan organisasi ini, diharapkan seluruh komponen sekolah dapat bersinergi dalam membangun lingkungan belajar yang nyaman, mendukung prestasi siswa, serta memperkuat nilai-nilai karakter dan disiplin di sekolah.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background-color: #0A3566; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2023 SMPN SATU ATAP 1 BANGODUA. Semua hak dilindungi.</p>
+        <p>Alamat: Jl. Contoh, Bangodua | Email: info@smpstap1bangodua.com | Telepon: (021) 1234567</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
