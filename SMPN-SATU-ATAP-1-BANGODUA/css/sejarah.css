@@ -1,3 +1,4 @@
+/* ===== RESET DASAR ===== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -9,15 +10,10 @@ body {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 40px;
-}
-
+/* ===== JUDUL UTAMA ===== */
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -27,6 +23,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 h1::after {
@@ -41,21 +38,17 @@ h1::after {
     border-radius: 2px;
 }
 
-h1 {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
+/* ===== SUBJUDUL ===== */
 h2 {
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
-    color: #1a237e; 
+    color: #1a237e;
     margin-bottom: 30px;
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
 }
-
 
 h2::after {
     content: "";
@@ -69,48 +62,87 @@ h2::after {
     border-radius: 2px;
 }
 
+/* ===== SECTION SEJARAH ===== */
 .sejarah-section {
-    margin-bottom: 40px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sejarah-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .sejarah-content {
     display: flex;
     align-items: center;
-    padding: 20px;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 30px;
 }
 
 .sejarah-content.reverse {
     flex-direction: row-reverse;
 }
 
+/* ===== GAMBAR ===== */
 .sejarah-image {
     width: 500px;
     height: auto;
-    border-radius: 8px;
-    margin: 0 20px;
+    border-radius: 10px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
+.sejarah-image:hover {
+    transform: scale(1.03);
+}
+
+/* ===== TEKS ===== */
 .sejarah-text {
     flex: 1;
+    line-height: 1.7;
 }
 
 .sejarah-text h2 {
     color: #007bff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
 }
 
 .sejarah-text p {
-    line-height: 1.6;
     margin-bottom: 15px;
     font-weight: 400;
 }
 
-/* Responsive */
+/* ===== RESPONSIF ===== */
+@media (max-width: 992px) {
+    main {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .sejarah-content {
+        gap: 20px;
+        padding: 25px;
+    }
+
+    .sejarah-image {
+        width: 400px;
+    }
+}
+
 @media (max-width: 768px) {
     .sejarah-content {
         flex-direction: column;
@@ -119,7 +151,38 @@ h2::after {
 
     .sejarah-image {
         width: 100%;
-        max-width: 400px;
+        max-width: 380px;
         margin: 10px 0;
+    }
+
+    .sejarah-text {
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .sejarah-section {
+        margin-bottom: 30px;
+    }
+
+    .sejarah-content {
+        padding: 20px 15px;
+    }
+
+    .sejarah-image {
+        max-width: 100%;
+        height: auto;
     }
 }

@@ -1,3 +1,4 @@
+/* ===== RESET DASAR ===== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -12,11 +13,7 @@ main {
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #007bff;
-}
-
+/* ===== JUDUL UTAMA ===== */
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -26,6 +23,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 h1::after {
@@ -40,10 +38,7 @@ h1::after {
     border-radius: 2px;
 }
 
-h1 {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
+/* ===== SUBJUDUL ===== */
 h2 {
     font-size: 2rem;
     font-weight: 600;
@@ -67,12 +62,12 @@ h2::after {
     border-radius: 2px;
 }
 
-
+/* ===== SECTION PRESTASI ===== */
 .prestasi-section {
     margin-bottom: 40px;
-    background-color: white;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -80,20 +75,27 @@ h2::after {
     display: flex;
     align-items: center;
     padding: 20px;
+    gap: 20px;
 }
 
 .prestasi-content.reverse {
     flex-direction: row-reverse;
 }
 
+/* ===== GAMBAR ===== */
 .prestasi-image {
     width: 450px;
     height: auto;
     border-radius: 8px;
-    margin: 0 20px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
+.prestasi-image:hover {
+    transform: scale(1.03);
+}
+
+/* ===== TEKS ===== */
 .prestasi-text {
     flex: 1;
 }
@@ -113,15 +115,17 @@ h2::after {
     padding-left: 20px;
 }
 
-/* Responsif */
+/* ===== RESPONSIF ===== */
 @media (max-width: 768px) {
     .prestasi-content {
         flex-direction: column;
         text-align: center;
     }
+
     .prestasi-content.reverse {
         flex-direction: column;
     }
+
     .prestasi-image {
         width: 100%;
         max-width: 400px;

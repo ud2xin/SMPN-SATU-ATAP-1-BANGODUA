@@ -1,32 +1,32 @@
+/* ========== NAVBAR ========== */
 nav {
     background-color: #0A3566;
 }
 
 .logo {
-    max-width: 40px; /* lebih kecil */
+    max-width: 40px;
 }
 
 .size-logo {
-    font-size: 20px; /* teks judul lebih kecil */
+    font-size: 20px;
 }
 
-  /* hamburger button */
 .navbar-toggler {
-    border: 1px solid white; /* outline putih */
+    border: 1px solid white;
 }
 
 .navbar-toggler-icon {
-    filter: invert(1); /* ikon putih */
+    filter: invert(1);
 }
 
 .nav-link.hover-menu {
-    display: inline-block;              /* biar bisa di-scale */
+    display: inline-block;
     transition: 0.3s ease-in-out;
 }
 
 .nav-link.hover-menu:hover {
     transform: scale(1.1);
-    color: orange !important; 
+    color: orange !important;
 }
 
 @media (max-width: 768px) {
@@ -35,8 +35,7 @@ nav {
     }
 }
 
-
-/* Reset dasar */
+/* ========== RESET DASAR ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -45,9 +44,6 @@ body {
     color: #333;
 }
 
-
-
-/* Styling utama halaman */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -55,25 +51,16 @@ main {
 }
 
 a {
-  color: white; /* Warna default */
-  text-decoration: none; /* Menghilangkan garis bawah */
+    color: white;
+    text-decoration: none;
 }
 
-a:visited {
-  color: white; /* Warna setelah dikunjungi */
-}
-
+a:visited,
 a:hover {
-  color: white; /* Warna saat kursor di atasnya */
+    color: white;
 }
 
-
-h1 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 40px;
-}
-
+/* ========== JUDUL UTAMA ========== */
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -83,6 +70,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 h1::after {
@@ -97,11 +85,7 @@ h1::after {
     border-radius: 2px;
 }
 
-h1 {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-
+/* ========== SUBJUDUL (H2) ========== */
 h2 {
     font-size: 2rem;
     font-weight: 600;
@@ -125,8 +109,7 @@ h2::after {
     border-radius: 2px;
 }
 
-
-/* Styling section ekskul */
+/* ========== KONTEN EKSKUL ========== */
 .ekskul-section {
     margin-bottom: 40px;
     background-color: white;
@@ -139,23 +122,18 @@ h2::after {
     display: flex;
     align-items: center;
     padding: 20px;
+    gap: 20px;
 }
 
 .ekskul-image {
-    width: 500px;  /* Diperbesar dari 300px untuk akomodasi teks panjang */
+    width: 500px;
     height: auto;
     border-radius: 8px;
-    margin: 0 20px;
-    flex-shrink: 0;  /* Mencegah gambar menyusut jika teks panjang */
+    flex-shrink: 0;
 }
 
 .ekskul-text {
     flex: 1;
-}
-
-.ekskul-text h2 {
-    color: #007bff;
-    margin-bottom: 10px;
 }
 
 .ekskul-text p {
@@ -168,18 +146,62 @@ h2::after {
     list-style-type: disc;
     padding-left: 20px;
     font-weight: 400;
-
 }
 
-/* Responsivitas: Untuk layar kecil (HP), stack vertikal dan gambar lebih kecil tapi tetap proporsional */
-@media (max-width: 768px) {
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .ekskul-image {
+        width: 100%;
+        max-width: 450px;
+    }
+
     .ekskul-content {
         flex-direction: column;
         text-align: center;
     }
+
+    .ekskul-text ul {
+        text-align: left;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 576px) {
+    main {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .ekskul-section {
+        margin-bottom: 30px;
+    }
+
+    .ekskul-content {
+        padding: 15px;
+    }
+
     .ekskul-image {
-        width: 100%;
-        max-width: 400px;  /* Tetap besar di HP, tapi tidak melebihi container */
+        max-width: 100%;
         margin: 10px 0;
+    }
+
+    .ekskul-text p {
+        font-size: 0.95rem;
     }
 }
