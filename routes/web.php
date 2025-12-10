@@ -4,12 +4,22 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
-use App\Http\Controllers\Admin\BeritaController;
-use App\Http\Controllers\Admin\KaryaController;
+use App\Http\Controllers\Frontend\GaleriFrontendController;
+use App\Http\Controllers\Frontend\TentangController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Galeri Frontend
+Route::get('/galeri', [GaleriFrontendController::class, 'index'])
+    ->name('galeri.index');
+
+Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
+    ->name('galeri.show');
+
+// Tentang (Visi-Misi dan Sejarah)
+Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
