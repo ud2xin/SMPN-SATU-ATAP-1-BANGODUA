@@ -4,7 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\KaryaController;
 use App\Http\Controllers\Frontend\GaleriFrontendController;
+use App\Http\Controllers\Frontend\BeritaFrontendController;
 use App\Http\Controllers\Frontend\TentangController;
 
 Route::get('/', function () {
@@ -17,6 +20,10 @@ Route::get('/galeri', [GaleriFrontendController::class, 'index'])
 
 Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
     ->name('galeri.show');
+
+// Berita Frontend
+Route::get('/berita', [BeritaFrontendController::class, 'index'])->name('frontend.berita');
+Route::get('/berita/{slug}', [BeritaFrontendController::class, 'show'])->name('frontend.single-berita');
 
 // Tentang (Visi-Misi dan Sejarah)
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
