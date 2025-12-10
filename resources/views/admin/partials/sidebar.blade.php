@@ -33,7 +33,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Kegiatan</span>
+            <span>Berita</span>
         </a>
     </li>
 

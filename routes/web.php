@@ -4,10 +4,18 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Frontend\GaleriFrontendController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Galeri Frontend
+Route::get('/galeri', [GaleriFrontendController::class, 'index'])
+    ->name('galeri.index');
+
+Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
+    ->name('galeri.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,6 +47,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/galeri/{id}/edit', [GaleriController::class, 'edit'])->name('galeri.edit');
             Route::put('/galeri/{id}/update', [GaleriController::class, 'update'])->name('galeri.update');
             Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
-    });
+        });
 
 require __DIR__.'/auth.php';
