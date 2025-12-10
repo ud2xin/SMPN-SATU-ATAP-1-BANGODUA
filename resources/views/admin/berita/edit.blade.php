@@ -29,7 +29,7 @@
 
                 <div class="form-group">
                     <label class="font-weight-bold">Konten</label>
-                    <textarea name="konten" rows="5" class="form-control" required>{{ $data->konten }}</textarea>
+                    <textarea id="konten" name="konten" rows="5" class="form-control" required>{{ $data->konten }}</textarea>
                 </div>
 
                 <div class="form-group">

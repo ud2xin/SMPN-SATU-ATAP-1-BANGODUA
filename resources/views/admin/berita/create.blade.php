@@ -27,7 +27,7 @@
 
                 <div class="form-group">
                     <label class="font-weight-bold">Konten</label>
-                    <textarea name="konten" rows="5" class="form-control" required></textarea>
+                    <textarea id="konten" name="konten" rows="5" class="form-control" required></textarea>
                 </div>
 
                 <div class="form-group">
@@ -45,8 +45,8 @@
                 <div class="form-group">
                     <label class="font-weight-bold">Kategori Berita</label>
                     <select name="kategori" class="form-control" required>
-                        <option value="berita">Berita</option>
-                        <option value="prestasi">Prestasi</option>
+                        <option value="berita" {{ old('kategori', $data->kategori ?? '') == 'berita' ? 'selected' : '' }}>Berita</option>
+                        <option value="prestasi" {{ old('kategori', $data->kategori ?? '') == 'prestasi' ? 'selected' : '' }}>Prestasi</option>
                     </select>
                 </div>
 

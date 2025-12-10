@@ -16,7 +16,9 @@ class Berita extends Model
         'konten',
         'tanggal',
         'slug',
+        'kategori',
     ];
+    
 
     public function user()
     {

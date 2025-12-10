@@ -55,7 +55,7 @@ class BeritaController extends Controller
         $validated = $request->validate([
             'judul' => 'required',
             'konten' => 'required',
-            'galeri_id' => 'required|exists:galeris,id',
+            'galeri_id' => 'required|exists:galeri,id',
             'kategori' => 'required|in:berita,prestasi'
         ]);
 
