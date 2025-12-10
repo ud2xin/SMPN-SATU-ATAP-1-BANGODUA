@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
+use App\Http\Controllers\Admin\BeritaController;
+use App\Http\Controllers\Admin\KaryaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,6 +44,9 @@ Route::middleware('auth')->group(function () {
 
             // berita
             Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
+
+            // karya
+            Route::resource('karya', KaryaController::class);
     });
 
 require __DIR__.'/auth.php';
