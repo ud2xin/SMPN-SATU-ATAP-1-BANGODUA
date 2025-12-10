@@ -1,0 +1,103 @@
+@extends('layouts.sbadmin')
+
+@section('content')
+<div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-newspaper mr-2"></i>Manajemen Berita
+        </h1>
+        <a href="{{ route('admin.berita.create') }}" class="btn btn-primary shadow-sm">
+            <i class="fas fa-plus-circle mr-2"></i>Tambah Berita
+        </a>
+    </div>
+
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <i class="fas fa-check-circle mr-2"></i>{{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    @endif
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <i class="fas fa-table mr-2"></i>Daftar Berita
+            </h6>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Thumbnail</th>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th>Kategori</th>
+                            <th>Diposting</th>
+                            <th width="15%" class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($berita as $b)
+                        <tr>
+                            {{-- Index berita berdasarkan pagination --}}
+                            <td>{{ ($berita->currentPage() - 1) * $berita->perPage() + $loop->iteration }}</td>
+
+                            <td>
+                                <img src="{{ asset('storage/'.$b->galeri->gambar) }}"
+                                     width="80" class="rounded shadow-sm">
+                            </td>
+
+                            <td class="font-weight-bold">{{ $b->judul }}</td>
+
+                            <td>{{ $b->user->name }}</td>
+
+                            <td>
+                                @if($b->kategori == 'berita')
+                                    <span class="badge badge-primary">Berita</span>
+                                @else
+                                    <span class="badge badge-success">Prestasi</span>
+                                @endif
+                            </td>
+
+                            <td>{{ $b->created_at->format('d M Y') }}</td>
+
+                            <td class="text-center">
+                                <a href="{{ route('admin.berita.edit', $b->id) }}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <form action="{{ route('admin.berita.destroy', $b->id) }}" method="POST" class="d-inline">
+                                    @csrf @method('DELETE')
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Hapus berita ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center py-5 text-muted">
+                                Belum ada berita
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-end">
+                    {{ $berita->links() }}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@endsection

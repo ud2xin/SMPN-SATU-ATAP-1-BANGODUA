@@ -25,6 +25,7 @@ class Berita extends Model
 
     public function galeri()
     {
-        return $this->belongsTo(Galeri::class);
+        return $this->belongsTo(Galeri::class, 'galeri_id');
     }
+
 }

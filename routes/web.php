@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/galeri/{id}/edit', [GaleriController::class, 'edit'])->name('galeri.edit');
             Route::put('/galeri/{id}/update', [GaleriController::class, 'update'])->name('galeri.update');
             Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+            // berita
+            Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
     });
 
 require __DIR__.'/auth.php';

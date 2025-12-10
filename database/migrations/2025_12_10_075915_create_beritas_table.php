@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('galeri_id')->nullable()->constrained('galeri')->nullOnDelete();
             $table->string('judul');
             $table->enum('kategori', ['berita', 'prestasi'])->default('berita');
             $table->text('konten');

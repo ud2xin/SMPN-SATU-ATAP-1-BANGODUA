@@ -29,12 +29,28 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/berita') }}">
+            <i class="fas fa-fw fa-images"></i>
+            <span>Berita</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Kegiatan -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Kegiatan</span>
+            <span>Hero</span>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span>Karya</span>
+        </a>
+    </li>
+
+
 
 </ul>
