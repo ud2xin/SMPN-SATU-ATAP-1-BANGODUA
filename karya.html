@@ -92,24 +92,20 @@
         .karya-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
             position: relative;
             overflow: hidden;
+            background: #f0f0f0;
         }
 
-        .karya-image::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+        .karya-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .karya-card:hover .karya-image img {
+            transform: scale(1.1);
         }
 
         .karya-content {
@@ -127,13 +123,15 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2em;
+            overflow: hidden;
+            border: 2px solid #4facfe;
+            flex-shrink: 0;
+        }
+
+        .student-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .student-details h4 {
@@ -214,15 +212,6 @@
             }
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
@@ -243,16 +232,20 @@
 
         <div class="filter-section">
             <button class="filter-btn active" data-filter="semua">Semua Karya</button>
-            <button class="filter-btn" data-filter="seni">Siswa</button>
-            <button class="filter-btn" data-filter="seni">Guru</button>
+            <button class="filter-btn" data-filter="seni">Karya Guru</button>
+            <button class="filter-btn" data-filter="tulis">Karya Siswa</button>
         </div>
 
         <div class="karya-grid">
             <div class="karya-card" data-category="seni">
-                <div class="karya-image">🎨</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lukisan Pemandangan">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">AS</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Aisha Salma">
+                        </div>
                         <div class="student-details">
                             <h4>Aisha Salma</h4>
                             <p class="student-class">Kelas 10A</p>
@@ -268,10 +261,14 @@
             </div>
 
             <div class="karya-card" data-category="tulis">
-                <div class="karya-image">✍️</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Menulis">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">BR</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Budi Raharjo">
+                        </div>
                         <div class="student-details">
                             <h4>Budi Raharjo</h4>
                             <p class="student-class">Kelas 11B</p>
@@ -287,10 +284,14 @@
             </div>
 
             <div class="karya-card" data-category="sains">
-                <div class="karya-image">🔬</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penelitian Sains">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">CA</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Citra Andini">
+                        </div>
                         <div class="student-details">
                             <h4>Citra Andini</h4>
                             <p class="student-class">Kelas 12A</p>
@@ -306,10 +307,14 @@
             </div>
 
             <div class="karya-card" data-category="teknologi">
-                <div class="karya-image">💻</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aplikasi Mobile">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">DF</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Dimas Fahri">
+                        </div>
                         <div class="student-details">
                             <h4>Dimas Fahri</h4>
                             <p class="student-class">Kelas 11C</p>
@@ -325,10 +330,14 @@
             </div>
 
             <div class="karya-card" data-category="seni">
-                <div class="karya-image">🎭</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Drama">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">EP</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Elisa Putri">
+                        </div>
                         <div class="student-details">
                             <h4>Elisa Putri</h4>
                             <p class="student-class">Kelas 10B</p>
@@ -344,10 +353,14 @@
             </div>
 
             <div class="karya-card" data-category="sains">
-                <div class="karya-image">🌱</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hidroponik">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">FH</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Farhan Hakim">
+                        </div>
                         <div class="student-details">
                             <h4>Farhan Hakim</h4>
                             <p class="student-class">Kelas 12B</p>
@@ -363,10 +376,14 @@
             </div>
 
             <div class="karya-card" data-category="tulis">
-                <div class="karya-image">📖</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Puisi">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">GS</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Gita Sari">
+                        </div>
                         <div class="student-details">
                             <h4>Gita Sari</h4>
                             <p class="student-class">Kelas 10C</p>
@@ -382,10 +399,14 @@
             </div>
 
             <div class="karya-card" data-category="teknologi">
-                <div class="karya-image">🤖</div>
+                <div class="karya-image">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Robot">
+                </div>
                 <div class="karya-content">
                     <div class="student-info">
-                        <div class="student-avatar">HW</div>
+                        <div class="student-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Hendra Wijaya">
+                        </div>
                         <div class="student-details">
                             <h4>Hendra Wijaya</h4>
                             <p class="student-class">Kelas 11A</p>
