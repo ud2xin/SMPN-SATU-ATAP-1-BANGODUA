@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\BeritaFrontendController;
 use App\Http\Controllers\Frontend\TentangController;
 use App\Http\Controllers\Admin\EkstrakurikulerController;
 use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
+use App\Http\Controllers\Frontend\LokasiFrontendController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,9 @@ Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 // Ekstrakurikuler Frontend
 Route::get('/ekstrakurikuler', [EkstrakurikulerFrontendController::class, 'index'])->name('frontend.ekstrakurikuler.index');
 Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerFrontendController::class, 'show'])->name('frontend.ekstrakurikuler.show');
+
+// Lokasi Frontend
+Route::get('/lokasi', [LokasiFrontendController::class, 'index'])->name('frontend.lokasi.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
