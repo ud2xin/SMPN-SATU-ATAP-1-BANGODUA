@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\Admin\GaleriController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,19 +20,25 @@ Route::middleware('auth')->group(function () {
 });
 
 // Grup route admin
-Route::middleware(['auth', IsAdmin::class])->group(function () {
+    Route::middleware(['auth', IsAdmin::class])
+        ->prefix('admin')
+        ->name('admin.')
+        ->group(function () {
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard', [
-            'title' => 'Dashboard Admin'
-        ]);
+            // Dashboard
+            Route::get('/dashboard', function () {
+                return view('admin.dashboard', [
+                    'title' => 'Dashboard Admin'
+                ]);
+            })->name('dashboard');
+
+            // Galeri
+            Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
+            Route::get('/galeri/create', [GaleriController::class, 'create'])->name('galeri.create');
+            Route::post('/galeri/store', [GaleriController::class, 'store'])->name('galeri.store');
+            Route::get('/galeri/{id}/edit', [GaleriController::class, 'edit'])->name('galeri.edit');
+            Route::put('/galeri/{id}/update', [GaleriController::class, 'update'])->name('galeri.update');
+            Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
     });
-
-    // route lain-lain admin
-    Route::get('/admin/galeri', function () {
-        return view('admin.galeri');
-    });
-
-});
 
 require __DIR__.'/auth.php';
