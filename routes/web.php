@@ -6,6 +6,8 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Frontend\GaleriFrontendController;
 use App\Http\Controllers\Frontend\TentangController;
+use App\Http\Controllers\Admin\EkstrakurikulerController;
+use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,6 +22,10 @@ Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
 
 // Tentang (Visi-Misi dan Sejarah)
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+
+// Ekstrakurikuler Frontend
+Route::get('/ekstrakurikuler', [EkstrakurikulerFrontendController::class, 'index'])->name('frontend.ekstrakurikuler.index');
+Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerFrontendController::class, 'show'])->name('frontend.ekstrakurikuler.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -54,6 +60,9 @@ Route::middleware('auth')->group(function () {
 
             // berita
             Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
-    });
+
+            // Ekstrakurikuler
+                Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
+});
 
 require __DIR__.'/auth.php';

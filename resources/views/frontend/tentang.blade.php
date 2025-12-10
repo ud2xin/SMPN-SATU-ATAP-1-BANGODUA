@@ -2,20 +2,6 @@
     <div class="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Hero Header -->
-            {{-- <div class="text-center mb-16 animate-fade-in">
-                <div class="inline-block mb-4">
-                    <span class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold">Profil Sekolah</span>
-                </div>
-                <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">
-                    Tentang Kami
-                </h1>
-                <p class="text-gray-600 text-xl max-w-2xl mx-auto">
-                    Mengenal lebih dekat SMPN SATU ATAP 1 BANGODUA
-                </p>
-                <div class="mt-8 h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
-            </div> --}}
-
             <!-- Grid Layout untuk Visi & Misi -->
             <div class="grid md:grid-cols-2 gap-8 mb-16">
 
@@ -127,23 +113,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Call to Action -->
-            {{-- <div class="text-center mt-16">
-                <div class="bg-white rounded-2xl shadow-xl p-8 max-w-3xl mx-auto">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Bergabunglah Bersama Kami</h3>
-                    <p class="text-gray-600 mb-6">Mari bersama-sama membangun masa depan yang lebih cerah melalui pendidikan berkualitas</p>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <a href="#" class="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                            Daftar Sekarang
-                        </a>
-                        <a href="#" class="px-8 py-3 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transform hover:-translate-y-1 transition-all duration-300">
-                            Hubungi Kami
-                        </a>
-                    </div>
-                </div>
-            </div> --}}
-
         </div>
     </div>
 </x-app-layout>

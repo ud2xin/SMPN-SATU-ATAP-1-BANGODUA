@@ -29,6 +29,14 @@
         </a>
     </li>
 
+    <!-- Nav Item - Ekstrakurikuler -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/ekstrakurikuler') }}">
+            <i class="fas fa-fw fa-futbol"></i>
+            <span>Ekstrakurikuler</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/berita') }}">
             <i class="fas fa-fw fa-images"></i>
