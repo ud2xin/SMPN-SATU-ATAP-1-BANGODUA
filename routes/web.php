@@ -10,12 +10,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Galeri Frontend
-Route::get('/galeri', [GaleriFrontendController::class, 'index'])
-    ->name('galeri.index');
+    // Galeri Frontend
+    Route::get('/galeri', [GaleriFrontendController::class, 'index'])
+        ->name('galeri.index');
 
-Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
-    ->name('galeri.show');
+    Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
+        ->name('galeri.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

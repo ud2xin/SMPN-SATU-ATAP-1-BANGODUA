@@ -9,18 +9,25 @@ class GaleriFrontendController extends Controller
 {
     public function index()
     {
-        // Hanya kategori galeri (bukan kegiatan)
-        $galeri = Galeri::where('kategori', 'galeri')
-                        ->orderBy('id', 'desc')
-                        ->paginate(12);
+        $kategori = request('kategori'); // ambil ?kategori=...
 
-        return view('frontend.galeri.index', compact('galeri'));
+        $galeri = Galeri::when($kategori, function($q) use ($kategori) {
+                        return $q->where('kategori', $kategori);
+                    })
+                    ->orderBy('id', 'desc')
+                    ->paginate(12);
+
+        return view('frontend.galeri.index', compact('galeri', 'kategori'));
     }
+
 
     public function show($id)
     {
-        $data = Galeri::findOrFail($id);
+        $galeri = Galeri::findOrFail($id);
 
-        return view('frontend.galeri.show', compact('data'));
+        return view('frontend.galeri.show', [
+            'galeri' => $galeri
+        ]);
     }
+
 }

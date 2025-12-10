@@ -1,18 +1,38 @@
-@extends('layouts.frontend')
+<x-app-layout>
 
-@section('content')
-<div class="container py-5">
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ $galeri->judul }}
+        </h2>
+    </x-slot>
 
-    <a href="{{ route('galeri.index') }}" class="btn btn-secondary mb-3">← Kembali</a>
+    <div class="py-8">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
 
-    <h2>{{ $data->judul }}</h2>
-    <p class="text-muted">{{ $data->created_at->format('d M Y') }}</p>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-    <div class="text-center">
-        <img src="{{ asset('storage/'.$data->gambar) }}" class="img-fluid mb-4" style="max-height: 500px; object-fit: contain;">
+                {{-- Gambar --}}
+                <img
+                    src="{{ asset('storage/galeri/' . $galeri->gambar) }}"
+                    alt="{{ $galeri->judul }}"
+                    class="w-full rounded-lg mb-4"
+                    style="max-height: 500px; object-fit: contain;"
+                >
+
+                {{-- Deskripsi --}}
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    {{ $galeri->deskripsi }}
+                </p>
+
+                {{-- Tombol kembali --}}
+                <a href="{{ route('galeri.index') }}"
+                    class="text-blue-600 hover:underline">
+                    ← Kembali ke Galeri
+                </a>
+
+            </div>
+
+        </div>
     </div>
 
-    <p>{{ $data->deskripsi }}</p>
-
-</div>
-@endsection
+</x-app-layout>
