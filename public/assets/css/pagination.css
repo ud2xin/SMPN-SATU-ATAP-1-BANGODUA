@@ -1,0 +1,18 @@
+/* Styling untuk link pagination agar terlihat seperti button */
+.pagination-container a.pagination-btn,
+.pagination-container a.pagination-number {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.sidebar-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+#pageNumbers {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

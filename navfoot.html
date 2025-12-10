@@ -52,7 +52,7 @@
 
         /* Navbar Styles */
         .navbar {
-            background: transparent;
+            background: linear-gradient(135deg, #08239c 0%, #5189c8 100%);
             padding: 1rem 2rem;
             box-shadow: none;
             position: fixed;
@@ -61,14 +61,6 @@
             right: 0;
             z-index: 1000;
             animation: slideDown 0.6s ease-out;
-            transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                        padding 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -101,28 +93,18 @@
             animation: fadeIn 0.8s ease-out 0.3s both;
         }
 
-        .navbar.scrolled .logo {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
         .logo:hover {
             transform: scale(1.1);
         }
 
         .school-name {
-            color: #FFD700;
+            color: #ffffff;
             font-size: 1.3rem;
             font-weight: 600;
             animation: fadeIn 0.8s ease-out 0.4s both;
             transition: color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
                         text-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar.scrolled .school-name {
-            color: white;
-            text-shadow: none;
         }
 
         /* Hamburger Menu */
@@ -138,7 +120,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #FFD700;
+            background: #ffffff;
             border-radius: 3px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -177,18 +159,12 @@
         .nav-menu li:nth-child(5) { animation-delay: 0.9s; }
 
         .nav-menu a {
-            color: #FFD700;
+            color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: bold;
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar.scrolled .nav-menu a {
-            color: white;
-            text-shadow: none;
         }
 
         .nav-menu a:hover {
@@ -197,8 +173,7 @@
         }
 
         .login-btn {
-            background: #FFD700;
-            color: #333;
+            background: #000000;
             padding: 0.7rem 1.5rem;
             border-radius: 25px;
             font-weight: 600;
@@ -207,19 +182,9 @@
             text-shadow: none;
         }
 
-        .navbar.scrolled .login-btn {
-            background: white;
-            color: #667eea;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-
         .login-btn:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
-        }
-
-        .navbar.scrolled .login-btn:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         /* Content Area */
@@ -350,10 +315,6 @@
                 gap: 0;
             }
 
-            .navbar:not(.scrolled) .nav-menu {
-                background: rgba(0, 0, 0, 0.95);
-            }
-
             .nav-menu.active {
                 left: 0;
             }
@@ -378,8 +339,6 @@
             }
 
             .login-btn {
-                background: white;
-                color: #667eea;
                 margin-top: 1rem;
                 width: 100%;
             }
@@ -519,19 +478,6 @@
     </footer>
 
     <script>
-        // Script untuk mengubah warna navbar saat scroll
-        const navbar = document.getElementById('navbar');
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
         // Toggle hamburger menu
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
