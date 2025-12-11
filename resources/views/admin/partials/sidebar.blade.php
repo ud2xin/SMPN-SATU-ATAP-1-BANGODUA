@@ -37,6 +37,14 @@
         </a>
     </li>
 
+    <!-- Nav Item - Osis -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/osis') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Osis</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/berita') }}">
             <i class="fas fa-fw fa-images"></i>

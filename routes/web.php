@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\TentangController;
 use App\Http\Controllers\Admin\EkstrakurikulerController;
 use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 use App\Http\Controllers\Frontend\LokasiFrontendController;
+use App\Http\Controllers\Admin\OsisController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -77,6 +78,9 @@ Route::middleware('auth')->group(function () {
 
             // karya
             Route::resource('karya', KaryaController::class);
+
+            // Osis
+            Route::resource('osis', OsisController::class);
 });
 
 require __DIR__.'/auth.php';
