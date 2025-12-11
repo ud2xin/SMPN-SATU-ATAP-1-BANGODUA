@@ -9,14 +9,14 @@ class Guru extends Model
 {
     use HasFactory;
 
+    protected $table = 'gurus';
+
     protected $fillable = [
-        'user_id',
+        'urut',
         'nama',
-        'keterangan',
+        'jabatan',
         'foto',
+        'notelp',
+        'keterangan',
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

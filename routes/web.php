@@ -14,6 +14,9 @@ use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 use App\Http\Controllers\Frontend\LokasiFrontendController;
 use App\Http\Controllers\Admin\OsisController;
 use App\Http\Controllers\Frontend\OsisFrontendController;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Frontend\GuruFrontendController;
+
 
 
 Route::get('/', function () {
@@ -43,6 +46,9 @@ Route::get('/lokasi', [LokasiFrontendController::class, 'index'])->name('fronten
 
 // Osis Frontend
 Route::get('/osis', [OsisFrontendController::class, 'index'])->name('osis.index');
+
+// Guru Frontend
+Route::get('/guru', [GuruFrontendController::class, 'index'])->name('guru.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -86,6 +92,9 @@ Route::middleware('auth')->group(function () {
 
             // Osis
             Route::resource('osis', OsisController::class);
+
+            // Guru
+            Route::resource('guru', GuruController::class)->parameters(['guru' => 'guru']);
 });
 
 require __DIR__.'/auth.php';
