@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\EkstrakurikulerController;
 use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 use App\Http\Controllers\Frontend\LokasiFrontendController;
 use App\Http\Controllers\Admin\OsisController;
+use App\Http\Controllers\Frontend\OsisFrontendController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +40,9 @@ Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerFrontendController::class, '
 
 // Lokasi Frontend
 Route::get('/lokasi', [LokasiFrontendController::class, 'index'])->name('frontend.lokasi.index');
+
+// Osis Frontend
+Route::get('/osis', [OsisFrontendController::class, 'index'])->name('osis.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
