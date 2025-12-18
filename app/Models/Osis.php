@@ -5,18 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guru extends Model
+class Osis extends Model
 {
     use HasFactory;
 
-    protected $table = 'gurus';
+    protected $table = 'osis';
 
     protected $fillable = [
-        'urut',
         'nama',
         'jabatan',
         'foto',
-        'notelp',
-        'keterangan',
+        'urut',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'urut' => 'integer',
     ];
 }

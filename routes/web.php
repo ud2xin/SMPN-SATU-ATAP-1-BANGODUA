@@ -12,6 +12,15 @@ use App\Http\Controllers\Frontend\TentangController;
 use App\Http\Controllers\Frontend\KaryaFrontendController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\EkstrakurikulerController;
+use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
+use App\Http\Controllers\Frontend\LokasiFrontendController;
+use App\Http\Controllers\Admin\OsisController;
+use App\Http\Controllers\Frontend\OsisFrontendController;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Frontend\GuruFrontendController;
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -33,6 +42,23 @@ Route::get('/karya/{id}', [KaryaFrontendController::class, 'show'])->name('front
 
 // Tentang (Visi-Misi dan Sejarah)
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+
+// Ekstrakurikuler Frontend
+Route::get('/ekstrakurikuler', [EkstrakurikulerFrontendController::class, 'index'])->name('frontend.ekstrakurikuler.index');
+Route::get('/ekstrakurikuler/{id}', [EkstrakurikulerFrontendController::class, 'show'])->name('frontend.ekstrakurikuler.show');
+
+// Lokasi Frontend
+Route::get('/lokasi', [LokasiFrontendController::class, 'index'])->name('frontend.lokasi.index');
+
+// Osis Frontend
+Route::get('/osis', [OsisFrontendController::class, 'index'])->name('osis.index');
+
+// Guru Frontend
+Route::get('/guru', [GuruFrontendController::class, 'index'])->name('guru.index');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -60,16 +86,21 @@ Route::middleware('auth')->group(function () {
             Route::get('/galeri/{id}/edit', [GaleriController::class, 'edit'])->name('galeri.edit');
             Route::put('/galeri/{id}/update', [GaleriController::class, 'update'])->name('galeri.update');
             Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
-
             // berita
             Route::resource('berita', \App\Http\Controllers\Admin\BeritaController::class);
-
+            // Ekstrakurikuler
+            Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
             // karya
             Route::resource('karya', KaryaController::class);
+            // Osis
+            Route::resource('osis', OsisController::class);
+            // Guru
+            Route::resource('guru', GuruController::class)->parameters(['guru' => 'guru']);
 
+            // hero
             Route::get('hero', [HeroController::class, 'index'])->name('hero.index');
             Route::get('hero/{hero}/edit', [HeroController::class, 'edit'])->name('hero.edit');
             Route::put('hero/{hero}', [HeroController::class, 'update'])->name('hero.update');
-    });
 
+    });
 require __DIR__.'/auth.php';

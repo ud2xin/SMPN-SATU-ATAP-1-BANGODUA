@@ -29,6 +29,30 @@
         </a>
     </li>
 
+    <!-- Nav Item - Ekstrakurikuler -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/ekstrakurikuler') }}">
+            <i class="fas fa-fw fa-futbol"></i>
+            <span>Ekstrakurikuler</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Osis -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/osis') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Osis</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Guru -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/guru') }}">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Guru</span>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/berita') }}">
             <i class="fas fa-fw fa-images"></i>
