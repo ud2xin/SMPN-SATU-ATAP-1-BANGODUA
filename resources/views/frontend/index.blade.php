@@ -2256,69 +2256,64 @@
     </nav>
 
     <section class="hero-section">
-        <div class="photo-grid">
-            <div class="photo-item top" style="--rotation: 8deg; --delay: 0s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item top" style="--rotation: -5deg; --delay: 0.5s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item top" style="--rotation: 6deg; --delay: 1s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item top" style="--rotation: -7deg; --delay: 1.5s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item top" style="--rotation: 5deg; --delay: 2s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            
-            <div class="photo-item bottom" style="--rotation: -6deg; --delay: 0.3s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item bottom" style="--rotation: 7deg; --delay: 0.8s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item bottom" style="--rotation: -5deg; --delay: 1.3s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item bottom" style="--rotation: 8deg; --delay: 1.8s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-            <div class="photo-item bottom" style="--rotation: -7deg; --delay: 2.3s;">
-                <div class="photo-inner">
-                    <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&h=600&fit=crop" alt="Student" class="photo-portrait">
-                </div>
-            </div>
-        </div>
+    <div class="photo-grid">
 
-        <div class="hero-content">
-            <div class="hero-badge">Website Resmi</div>
-            <h1>SMPN SATU ATAP 1 BANGODUA</h1>
-            <p class="hero-subtitle">
-                Membentuk generasi muda yang cerdas, berkarakter, dan siap menghadapi masa depan yang lebih baik
-            </p>
-            <a href="#" class="cta-button">Galeri Lengkap Kami</a>
-        </div>
-    </section>
+        {{-- 5 GAMBAR ATAS --}}
+        @for($i = 1; $i <= 5; $i++)
+            @php
+                $rel = 'gambarKecil'.$i;
+            @endphp
+            <div class="photo-item top"
+                 style="--rotation: {{ [8,-5,6,-7,5][$i-1] }}deg; --delay: {{ ($i-1)*0.5 }}s;">
+                <div class="photo-inner">
+                    @if($hero->$rel)
+                        <img src="{{ asset('storage/'.$hero->$rel->gambar) }}"
+                             class="photo-portrait"
+                             alt="Hero Image {{ $i }}">
+                    @else
+                        <div class="photo-portrait bg-secondary"></div>
+                    @endif
+                </div>
+            </div>
+        @endfor
+
+        {{-- 5 GAMBAR BAWAH --}}
+        @for($i = 6; $i <= 10; $i++)
+            @php
+                $rel = 'gambarKecil'.$i;
+            @endphp
+            <div class="photo-item bottom"
+                 style="--rotation: {{ [-6,7,-5,8,-7][$i-6] }}deg; --delay: {{ (($i-6)*0.5)+0.3 }}s;">
+                <div class="photo-inner">
+                    @if($hero->$rel)
+                        <img src="{{ asset('storage/'.$hero->$rel->gambar) }}"
+                             class="photo-portrait"
+                             alt="Hero Image {{ $i }}">
+                    @else
+                        <div class="photo-portrait bg-secondary"></div>
+                    @endif
+                </div>
+            </div>
+        @endfor
+
+    </div>
+
+    {{-- TEKS HERO --}}
+    <div class="hero-content">
+        <div class="hero-badge">Website Resmi</div>
+
+        <h1>{{ $hero->judul ?? 'SMPN SATU ATAP 1 BANGODUA' }}</h1>
+
+        <p class="hero-subtitle">
+            {{ $hero->subjudul ?? 'Membentuk generasi muda yang cerdas, berkarakter, dan siap menghadapi masa depan yang lebih baik' }}
+        </p>
+
+        <a href="{{ route('galeri.index') }}" class="cta-button">
+            Galeri Lengkap Kami
+        </a>
+    </div>
+</section>
+
 
     <section class="sambutan-section" id="sambutan">
         <div class="sambutan-container">

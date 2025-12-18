@@ -1,80 +1,119 @@
 @extends('layouts.sbadmin')
 
 @section('content')
-<div class="container-fluid">
+<div class="container mt-4">
 
-    <h1 class="h3 mb-4 text-gray-800">
-        <i class="fas fa-edit mr-2"></i>Edit Karya
-    </h1>
+    <h3>Edit Karya</h3>
+    <hr>
 
-    <div class="card shadow">
-        <div class="card-header">
-            <h6 class="font-weight-bold text-warning">Form Edit Karya</h6>
-        </div>
+    <form action="{{ route('admin.karya.update', $karya->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-        <div class="card-body">
+        <div class="row">
 
-            <form method="POST" action="{{ route('admin.karya.update',$data->id) }}">
-                @csrf
-                @method('PUT')
+            <div class="col-md-6 mb-3">
+                <label>User</label>
+                <select name="user_id" class="form-control" required>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}" 
+                            {{ $user->id == $karya->user_id ? 'selected' : '' }}>
+                            {{ $user->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Judul</label>
-                    <input type="text" name="judul" value="{{ old('judul',$data->judul) }}" class="form-control @error('judul') is-invalid @enderror">
-                    @error('judul') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+            {{-- Nama --}}
+            <div class="col-md-6 mb-3">
+                <label>Nama Pemilik</label>
+                <input type="text" name="nama" class="form-control" value="{{ $karya->nama }}" required>
+            </div>
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Nama</label>
-                    <input type="text" name="nama" value="{{ old('nama',$data->nama) }}" class="form-control @error('nama') is-invalid @enderror">
-                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+            {{-- Foto Pemilik --}}
+            <div class="col-md-6 mb-3">
+                <label>Foto Pemilik</label>
+                <input type="file" name="foto_pemilik" class="form-control">
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Jabatan</label>
-                    <input type="text" name="jabatan" value="{{ old('jabatan',$data->jabatan) }}" class="form-control @error('jabatan') is-invalid @enderror">
-                    @error('jabatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                @if ($karya->foto_pemilik)
+                    <img src="{{ asset('storage/' . $karya->foto_pemilik) }}"
+                         width="80" class="mt-2 rounded">
+                @endif
+            </div>
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Kategori</label>
-                    <select name="kategori" class="form-control @error('kategori') is-invalid @enderror">
-                        <option value="siswa" {{ $data->kategori=='siswa'?'selected':'' }}>Siswa</option>
-                        <option value="guru" {{ $data->kategori=='guru'?'selected':'' }}>Guru</option>
-                    </select>
-                    @error('kategori') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+            {{-- Info --}}
+            <div class="col-md-6 mb-3">
+                <label>Info Pemilik</label>
+                <input type="text" name="info_pemilik" 
+                       class="form-control" 
+                       value="{{ $karya->info_pemilik }}">
+            </div>
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Foto (ambil dari galeri)</label>
-                    <select name="galeri_id" class="form-control @error('galeri_id') is-invalid @enderror">
+            {{-- Judul --}}
+            <div class="col-md-12 mb-3">
+                <label>Judul</label>
+                <input type="text" name="judul" class="form-control" value="{{ $karya->judul }}" required>
+            </div>
+
+            {{-- Kategori --}}
+            <div class="col-md-6 mb-3">
+                <label>Kategori</label>
+                <select name="kategori" class="form-control">
+                    <option value="Karya_siswa" {{ $karya->kategori == 'Karya_siswa' ? 'selected' : '' }}>Karya Siswa</option>
+                    <option value="karya_guru" {{ $karya->kategori == 'karya_guru' ? 'selected' : '' }}>Karya Guru</option>
+                </select>
+            </div>
+
+            {{-- Tanggal --}}
+            <div class="col-md-6 mb-3">
+                <label>Tanggal</label>
+                <input type="date" name="tanggal" class="form-control" value="{{ $karya->tanggal }}" required>
+            </div>
+
+            {{-- Gambar --}}
+            @foreach([1,2,3] as $i)
+                <div class="col-md-6 mb-3">
+                    <label>Gambar {{ $i }}</label>
+                    <select name="gambar_{{ $i }}_id" class="form-control" required>
                         @foreach($galeri as $g)
-                            <option value="{{ $g->id }}" {{ $data->galeri_id==$g->id?'selected':'' }}>
+                            <option value="{{ $g->id }}"
+                                {{ $g->id == $karya->{'gambar_'.$i.'_id'} ? 'selected' : '' }}>
                                 {{ $g->judul }}
                             </option>
                         @endforeach
                     </select>
-                    @error('galeri_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
+            @endforeach
 
-                <div class="form-group">
-                    <label class="font-weight-bold">Deskripsi</label>
-                    <textarea name="deskripsi" rows="5" class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi',$data->deskripsi) }}</textarea>
-                    @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+            {{-- Cover --}}
+            <div class="col-md-12 mb-3">
+                <label>Cover</label>
+                <select name="cover" class="form-control" required>
+                    @foreach(['gambar_1','gambar_2','gambar_3'] as $cover)
+                        <option value="{{ $cover }}"
+                            {{ $karya->cover == $cover ? 'selected' : '' }}>
+                            {{ ucfirst(str_replace('_',' ', $cover)) }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-                <div class="d-flex justify-content-between">
-                    <a href="{{ route('admin.karya.index') }}" class="btn btn-secondary">Kembali</a>
+            {{-- Deskripsi --}}
+            <div class="col-md-12 mb-3">
+                <label>Deskripsi</label>
+                <textarea name="deskripsi" class="form-control" rows="3">{{ $karya->deskripsi }}</textarea>
+            </div>
 
-                    <button class="btn btn-warning">
-                        <i class="fas fa-save mr-1"></i>Update
-                    </button>
-                </div>
-
-            </form>
+            {{-- Konten --}}
+            <div class="col-md-12 mb-3">
+                <label>Konten</label>
+                <textarea name="konten" class="form-control" rows="4">{{ $karya->konten }}</textarea>
+            </div>
 
         </div>
-    </div>
+
+        <button class="btn btn-primary mt-2">Perbarui</button>
+    </form>
 
 </div>
 @endsection

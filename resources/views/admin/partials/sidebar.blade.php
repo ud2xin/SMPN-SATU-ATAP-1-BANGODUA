@@ -38,7 +38,7 @@
 
     <!-- Nav Item - Kegiatan -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
+        <a class="nav-link" href="{{ url('/admin/hero') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Hero</span>
         </a>

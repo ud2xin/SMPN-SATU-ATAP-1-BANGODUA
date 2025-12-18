@@ -1,140 +1,68 @@
 @extends('layouts.sbadmin')
 
 @section('content')
-<div class="container-fluid">
+<div class="container mt-4">
 
-    <div class="d-sm-flex justify-content-between mb-4">
-        <h1 class="h3 text-gray-800"><i class="fas fa-paint-brush mr-2"></i>Manajemen Karya</h1>
-        <a href="{{ route('admin.karya.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus-circle mr-1"></i>Tambah Karya
-        </a>
-    </div>
-
-    <!-- Statistics Cards -->
-    <div class="row mb-4">
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Karya
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $karya->total() }}</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-image fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Kategori Siswa
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $karya->where('kategori', 'siswa')->count() }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-photo-video fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Kategori Guru
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ $karya->where('kategori', 'guru')->count() }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Data Karya</h3>
+        <a href="{{ route('admin.karya.create') }}" class="btn btn-primary">+ Tambah Karya</a>
     </div>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <div class="card shadow">
-        <div class="card-header">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Karya</h6>
-        </div>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Judul</th>
+                <th>Pemilik</th>
+                <th>Kategori</th>
+                <th>Foto Pemilik</th>
+                <th>Tanggal</th>
+                <th width="180px">Aksi</th>
+            </tr>
+        </thead>
 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Nama</th>
-                            <th>Judul</th>
-                            <th>Kategori</th>
-                            <th>Jabatan</th>
-                            <th>Tanggal</th>
-                            <th width="15%">Aksi</th>
-                        </tr>
-                    </thead>
+        <tbody>
+            @forelse($karyas as $karya)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $karya->judul }}</td>
+                <td>{{ $karya->nama }}</td>
+                <td>{{ $karya->kategori }}</td>
 
-                    <tbody>
-                        @forelse($karya as $k)
-                        <tr>
-                            <td>{{ ($karya->currentPage()-1)*$karya->perPage() + $loop->iteration }}</td>
-                            <td>{{ $k->nama }}</td>
-                            <td class="font-weight-bold">{{ $k->judul }}</td>
-                            <td>
-                                <span class="badge badge-info">{{ ucfirst($k->kategori) }}</span>
-                            </td>
-                            <td>{{ $k->jabatan }}</td>
-                            <td>{{ $k->tanggal }}</td>
-                            <td>
-                                <a href="{{ route('admin.karya.edit',$k->id) }}" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                <td>
+                    <img src="{{ asset('storage/' . $karya->foto_pemilik) }}"
+                         class="rounded"
+                         width="60">
+                </td>
 
-                                <form action="{{ route('admin.karya.destroy',$k->id) }}" method="POST" class="d-inline">
-                                    @csrf @method('DELETE')
-                                    <button class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Hapus karya ini?')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="7" class="text-center text-muted py-5">Belum ada data</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
+                <td>{{ $karya->tanggal }}</td>
 
-                </table>
+                <td>
+                    <a href="{{ route('admin.karya.edit', $karya->id) }}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
 
-                <div class="d-flex justify-content-end">
-                    {{ $karya->links() }}
-                </div>
-            </div>
-        </div>
-    </div>
+                    <form action="{{ route('admin.karya.destroy', $karya->id) }}"
+                          method="POST"
+                          class="d-inline"
+                          onsubmit="return confirm('Yakin ingin menghapus?')">
+                        @csrf
+                        @method('DELETE')
 
+                        <button class="btn btn-danger btn-sm">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="7" class="text-center text-muted">Belum ada karya.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 </div>
 @endsection

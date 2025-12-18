@@ -14,13 +14,14 @@ return new class extends Migration
             $table->foreignId('gambar_1_id')->constrained('galeri');
             $table->foreignId('gambar_2_id')->constrained('galeri');
             $table->foreignId('gambar_3_id')->constrained('galeri');
-            $table->foreignId('gambar_4_id')->constrained('galeri');
-            $table->enum('cover', ['gambar_1','gambar_2','gambar_3','gambar_4']);
+            $table->enum('cover', ['gambar_1','gambar_2','gambar_3']);
+            $table->enum('kategori', ['karya_siswa', 'karya_guru']);
             $table->string('foto_pemilik')->nullable();
+            $table->string('info_pemilik')->nullable();
             $table->string('judul');
             $table->string('nama');
-            $table->string('jabatan')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->text('konten')->nullable();
             $table->date('tanggal');
             $table->timestamps();
         });

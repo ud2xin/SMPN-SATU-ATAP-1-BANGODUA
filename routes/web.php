@@ -9,10 +9,11 @@ use App\Http\Controllers\Admin\KaryaController;
 use App\Http\Controllers\Frontend\GaleriFrontendController;
 use App\Http\Controllers\Frontend\BeritaFrontendController;
 use App\Http\Controllers\Frontend\TentangController;
+use App\Http\Controllers\Frontend\KaryaFrontendController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Admin\HeroController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Galeri Frontend
 Route::get('/galeri', [GaleriFrontendController::class, 'index'])
@@ -25,12 +26,13 @@ Route::get('/galeri/{id}', [GaleriFrontendController::class, 'show'])
 Route::get('/berita', [BeritaFrontendController::class, 'index'])->name('frontend.berita');
 Route::get('/berita/{slug}', [BeritaFrontendController::class, 'show'])->name('frontend.single-berita');
 
+// karya
+Route::get('/karya', [KaryaFrontendController::class, 'index'])->name('frontend.karya');
+Route::get('/karya/{id}', [KaryaFrontendController::class, 'show'])->name('frontend.single-karya');
+
+
 // Tentang (Visi-Misi dan Sejarah)
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -64,6 +66,10 @@ Route::middleware('auth')->group(function () {
 
             // karya
             Route::resource('karya', KaryaController::class);
+
+            Route::get('hero', [HeroController::class, 'index'])->name('hero.index');
+            Route::get('hero/{hero}/edit', [HeroController::class, 'edit'])->name('hero.edit');
+            Route::put('hero/{hero}', [HeroController::class, 'update'])->name('hero.update');
     });
 
 require __DIR__.'/auth.php';

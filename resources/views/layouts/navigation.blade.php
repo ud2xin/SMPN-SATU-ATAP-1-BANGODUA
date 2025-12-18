@@ -15,7 +15,7 @@
         <ul class="nav-menu" id="navMenu">
             <li><a href="{{ route('frontend.berita') }}">Berita</a></li>
             <li><a href="">Galeri</a></li>
-            <li><a href="">Karya</a></li>
+            <li><a href="{{ route('frontend.karya') }}">Karya</a></li>
             <li><a href="#contact">Kontak</a></li>
 
             {{-- Jika mau dibuat link login Laravel --}}
