@@ -6,20 +6,20 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\KaryaController;
+use App\Http\Controllers\Admin\SambutanController;
+use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\EkstrakurikulerController;
+use App\Http\Controllers\Admin\OsisController;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Frontend\GuruFrontendController;
 use App\Http\Controllers\Frontend\GaleriFrontendController;
 use App\Http\Controllers\Frontend\BeritaFrontendController;
 use App\Http\Controllers\Frontend\TentangController;
 use App\Http\Controllers\Frontend\KaryaFrontendController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Admin\HeroController;
-use App\Http\Controllers\Admin\EkstrakurikulerController;
+use App\Http\Controllers\Frontend\OsisFrontendController;
 use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 use App\Http\Controllers\Frontend\LokasiFrontendController;
-use App\Http\Controllers\Admin\OsisController;
-use App\Http\Controllers\Frontend\OsisFrontendController;
-use App\Http\Controllers\Admin\GuruController;
-use App\Http\Controllers\Frontend\GuruFrontendController;
-
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -101,6 +101,11 @@ Route::middleware('auth')->group(function () {
             Route::get('hero', [HeroController::class, 'index'])->name('hero.index');
             Route::get('hero/{hero}/edit', [HeroController::class, 'edit'])->name('hero.edit');
             Route::put('hero/{hero}', [HeroController::class, 'update'])->name('hero.update');
+
+            // sambutan
+            Route::get('sambutan', [SambutanController::class, 'index'])->name('sambutan.index');
+            Route::get('sambutan/edit', [SambutanController::class, 'edit'])->name('sambutan.edit');
+            Route::put('sambutan', [SambutanController::class, 'update'])->name('sambutan.update');
 
     });
 require __DIR__.'/auth.php';

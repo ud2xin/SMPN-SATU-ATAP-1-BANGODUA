@@ -69,6 +69,13 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/sambutan') }}">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span>Sambutan</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/karya') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Karya</span>

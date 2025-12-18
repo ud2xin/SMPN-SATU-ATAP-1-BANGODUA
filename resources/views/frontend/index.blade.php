@@ -396,6 +396,9 @@
         .nav-menu li:nth-child(3) { animation-delay: 0.7s; }
         .nav-menu li:nth-child(4) { animation-delay: 0.8s; }
         .nav-menu li:nth-child(5) { animation-delay: 0.9s; }
+        .nav-menu li:nth-child(6) { animation-delay: 1.1s; }
+        .nav-menu li:nth-child(7) { animation-delay: 1.3s; }
+        .nav-menu li:nth-child(8) { animation-delay: 1.5s; }
 
         .menu-gw {
             color: #FFD700;
@@ -2247,9 +2250,11 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="menu-gw">Beranda</a></li>
-                <li><a href="#about" class="menu-gw">Tentang</a></li>
-                <li><a href="#programs" class="menu-gw">Program</a></li>
-                <li><a href="#contact" class="menu-gw">Kontak</a></li>
+                <li><a href="#about" class="menu-gw">Informasi</a></li>
+                <li><a href="#programs" class="menu-gw">Struktur Organisasi</a></li>
+                <li><a href="{{ url('/berita') }}" class="menu-gw">Berita</a></li>
+                <li><a href="#contact" class="menu-gw">Galeri</a></li>
+                <li><a href="#contact" class="menu-gw">SPMB</a></li>
                 <li><a href="#login" class="login-btn">Login Admin</a></li>
             </ul>
         </div>
@@ -2315,202 +2320,133 @@
 </section>
 
 
-    <section class="sambutan-section" id="sambutan">
-        <div class="sambutan-container">
-            <div class="sambutan-header">
-                <span class="sambutan-badge">Sambutan</span>
-                <h2 class="sambutan-title">Sambutan Kepala Sekolah</h2>
-                <div class="sambutan-divider"></div>
+<section class="sambutan-section" id="sambutan">
+    <div class="sambutan-container">
+        <div class="sambutan-header">
+            <span class="sambutan-badge">Sambutan</span>
+            <h2 class="sambutan-title">Sambutan Kepala Sekolah</h2>
+            <div class="sambutan-divider"></div>
+        </div>
+
+        <div class="sambutan-content">
+
+            {{-- FOTO KEPALA SEKOLAH --}}
+            <div class="sambutan-image-wrapper">
+                <div class="sambutan-image-card">
+                    <div class="sambutan-image-border"></div>
+
+                    <img
+                        src="{{ 
+                            $sambutan && $sambutan->fotoKepala && $sambutan->fotoKepala->foto
+                                ? asset('storage/' . $sambutan->fotoKepala->foto)
+                                : asset('assets/img/default-user.jpg')
+                        }}"
+                        alt="Kepala Sekolah"
+                        class="sambutan-image"
+                    >
+
+                    <div class="sambutan-name-card">
+                        <h3>
+                            {{ $sambutan->kepalaGuru->nama ?? 'Nama Kepala Sekolah' }}
+                        </h3>
+                        <p>Kepala Sekolah</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="sambutan-content">
-                <div class="sambutan-image-wrapper">
-                    <div class="sambutan-image-card">
-                        <div class="sambutan-image-border"></div>
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop" 
-                             alt="Kepala Sekolah" 
-                             class="sambutan-image">
-                        <div class="sambutan-name-card">
-                            <h3>ISMIATI, S.Pd</h3>
-                            <p>Kepala Sekolah</p>
-                        </div>
-                    </div>
+            {{-- TEKS SAMBUTAN --}}
+            <div class="sambutan-text-wrapper">
+
+                <div class="sambutan-greeting">
+                    <p class="sambutan-arabic">
+                        Assalamu'alaikum warahmatullahi wabarakatuh,
+                    </p>
                 </div>
 
-                <div class="sambutan-text-wrapper">
-                    <div class="sambutan-greeting">
-                        <p class="sambutan-arabic">Assalamu'alaikum warahmatullahi wabarakatuh,</p>
-                        <p class="sambutan-intro">Halo anak-anak semua,</p>
-                    </div>
-
-                    <div class="sambutan-message">
-                        <p>Senang sekali saya bisa menyapa kalian di hari ini. Di sekolah kita, kita punya visi besar, yaitu menjadi Pelajar GEMAH RIPAH LOH JINAWI: rajin beribadah dan beramal, pandai dan amanah, peduli lingkungan, hidup sehat, berjiwa nasionalis, dan wirausaha.</p>
-
-                        <p>Untuk mencapai itu, kita punya beberapa misi penting: Rajin belajar, beribadah, dan berperilaku santun menjadi dasar pembiasaan siswa, disertai kepedulian menjaga lingkungan sekolah agar tetap bersih, indah, dan asri melalui kegiatan GEMMES setiap Jumat. Sekolah juga mendorong pengembangan bakat di bidang olahraga, seni, bahasa, dan berbagai ekstrakurikuler, sekaligus memperluas pengalaman belajar melalui kerja sama dengan dunia usaha agar setiap siswa dapat mengenal dunia nyata secara lebih luas dan bermakna.</p>
-
-                        <p>Saya mengajak kalian semua untuk selalu semangat, saling membantu, dan menjaga nama baik sekolah. Dengan begitu, kita bisa tumbuh menjadi generasi yang cerdas, berakhlak, dan siap menghadapi masa depan.</p>
-
-                        <p class="sambutan-closing">Terima kasih, anak-anak. Terus semangat ya!</p>
-                        <p class="sambutan-arabic-closing">Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
-                    </div>
-
-                    <div class="sambutan-signature">
-                        <div class="sambutan-signature-line"></div>
-                        <p class="sambutan-signature-name">ISMIATI, S.Pd</p>
-                        <p class="sambutan-signature-title">Kepala Sekolah SMPN Satu Atap 1 Bangodua</p>
-                    </div>
+                <div class="sambutan-message">
+                    @if($sambutan && $sambutan->sambutan_kepala)
+                        {!! $sambutan->sambutan_kepala !!}
+                    @else
+                        <p class="text-muted fst-italic">
+                            Sambutan kepala sekolah belum tersedia.
+                        </p>
+                    @endif
                 </div>
+
+                <div class="sambutan-signature">
+                    <div class="sambutan-signature-line"></div>
+
+                    <p class="sambutan-signature-name">
+                        {{ $sambutan->kepalaGuru->nama ?? '—' }}
+                    </p>
+
+                    <p class="sambutan-signature-title">
+                        Kepala Sekolah {{ config('app.name') }}
+                    </p>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Section Berita - Letakkan setelah section sambutan -->
     <section class="berita-index-section" id="berita">
-        <div class="berita-index-container">
-            <div class="berita-index-header">
-                <span class="berita-index-badge">Berita Terbaru</span>
-                <h2 class="berita-index-title">Aktivitas Terbaru Siswa dan Berita Lebih Lanjut</h2>
-                <div class="berita-index-divider"></div>
-            </div>
+    <div class="berita-index-container">
+        <div class="berita-index-header">
+            <span class="berita-index-badge">Berita Terbaru</span>
+            <h2 class="berita-index-title">Aktivitas Terbaru Siswa dan Berita Lebih Lanjut</h2>
+            <div class="berita-index-divider"></div>
+        </div>
 
-            <div class="berita-index-slider-wrapper">
-                <button class="berita-index-nav-btn berita-index-prev" id="beritaPrev">
-                    <span>‹</span>
-                </button>
+        <div class="berita-index-slider-wrapper">
+            <button class="berita-index-nav-btn berita-index-prev" id="beritaPrev"><span>‹</span></button>
 
-                <div class="berita-index-slider" id="beritaSlider">
-                    <div class="berita-index-track" id="beritaTrack">
-                        <!-- Berita 1 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=600&fit=crop" alt="Berita 1">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">2 minggu lalu</span>
-                                <h3 class="berita-index-card-title">Berita dari Kantor Executive Principal</h3>
-                                <p class="berita-index-description">Kepada para orang tua, siswa, guru, dan alumni Sekolah Ciputra, Minggu ini kembali menjadi contoh luar biasa tentang arti menjadi...</p>
-                            </div>
+            <div class="berita-index-slider" id="beritaSlider">
+                <div class="berita-index-track" id="beritaTrack">
+
+                    @foreach($beritas as $berita)
+                    <div class="berita-index-card">
+                        <div class="berita-index-image">
+                            <img src="{{ asset('storage/' . ($berita->galeri->gambar ?? 'default.jpg')) }}"
+                                 alt="{{ $berita->judul }}">
+                            <div class="berita-index-overlay"></div>
                         </div>
 
-                        <!-- Berita 2 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=600&fit=crop" alt="Berita 2">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">2 minggu lalu</span>
-                                <h3 class="berita-index-card-title">Global Robotics Games 2025</h3>
-                                <p class="berita-index-description">Sekolah Ciputra dengan bangga merayakan pencapaian luar biasa Tim Robotika P7 P 8 kami di Global Robotic Games (GRG) 2025 yang...</p>
-                            </div>
-                        </div>
+                        <div class="berita-index-content">
+                            <span class="berita-index-time">
+                                {{ $berita->created_at->diffForHumans() }}
+                            </span>
 
-                        <!-- Berita 3 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop" alt="Berita 3">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">3 minggu lalu</span>
-                                <h3 class="berita-index-card-title">Kegiatan Ekstrakurikuler Seni Musik</h3>
-                                <p class="berita-index-description">Siswa-siswi kami menunjukkan bakat luar biasa dalam pertunjukan musik yang memukau. Kepada para sahabat Sekolah Ciputra, Minggu ini merupakan salah satu minggu yang paling berkesan...</p>
-                            </div>
-                        </div>
+                            <h3 class="berita-index-card-title">
+                                {{ $berita->judul }}
+                            </h3>
 
-                        <!-- Berita 4 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop" alt="Berita 4">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">3 minggu lalu</span>
-                                <h3 class="berita-index-card-title">Olimpiade Sains Nasional 2025</h3>
-                                <p class="berita-index-description">Para siswa berprestasi meraih medali emas dan perak di kompetisi Olimpiade Sains tingkat nasional...</p>
-                            </div>
-                        </div>
-
-                        <!-- Berita 5 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=600&fit=crop" alt="Berita 5">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">4 minggu lalu</span>
-                                <h3 class="berita-index-card-title">Peringatan Hari Kartini</h3>
-                                <p class="berita-index-description">Seluruh siswa merayakan Hari Kartini dengan mengenakan pakaian adat dan mengadakan lomba...</p>
-                            </div>
-                        </div>
-
-                        <!-- Berita 6 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&h=600&fit=crop" alt="Berita 6">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">1 bulan lalu</span>
-                                <h3 class="berita-index-card-title">Kunjungan Industri ke Pabrik</h3>
-                                <p class="berita-index-description">Siswa kelas 11 mengunjungi beberapa pabrik untuk mempelajari proses produksi dan manajemen industri...</p>
-                            </div>
-                        </div>
-
-                        <!-- Berita 7 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop" alt="Berita 7">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">1 bulan lalu</span>
-                                <h3 class="berita-index-card-title">Turnamen Basket Antar Sekolah</h3>
-                                <p class="berita-index-description">Tim basket sekolah berhasil menjuarai turnamen basket tingkat kota dengan skor telak...</p>
-                            </div>
-                        </div>
-
-                        <!-- Berita 8 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?w=800&h=600&fit=crop" alt="Berita 8">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">1 bulan lalu</span>
-                                <h3 class="berita-index-card-title">Workshop Digital Marketing</h3>
-                                <p class="berita-index-description">Siswa mengikuti workshop digital marketing yang diadakan oleh praktisi profesional...</p>
-                            </div>
-                        </div>
-
-                        <!-- Berita 9 -->
-                        <div class="berita-index-card">
-                            <div class="berita-index-image">
-                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Berita 9">
-                                <div class="berita-index-overlay"></div>
-                            </div>
-                            <div class="berita-index-content">
-                                <span class="berita-index-time">2 bulan lalu</span>
-                                <h3 class="berita-index-card-title">Program Bakti Sosial</h3>
-                                <p class="berita-index-description">Sekolah mengadakan bakti sosial dengan memberikan bantuan kepada masyarakat kurang mampu...</p>
-                            </div>
+                            <p class="berita-index-description">
+                                {{ Str::limit(strip_tags($berita->konten), 120) }}
+                            </p>
                         </div>
                     </div>
+                    @endforeach
+
                 </div>
-
-                <button class="berita-index-nav-btn berita-index-next" id="beritaNext">
-                    <span>›</span>
-                </button>
             </div>
 
-            <div class="berita-index-dots" id="beritaDots"></div>
-
-            <div class="berita-index-button-wrapper">
-                <a href="#" class="berita-index-cta-button">Lihat Semua Berita</a>
-            </div>
+            <button class="berita-index-nav-btn berita-index-next" id="beritaNext"><span>›</span></button>
         </div>
-    </section>
+
+        <div class="berita-index-dots" id="beritaDots"></div>
+
+        <div class="berita-index-button-wrapper">
+            <a href="{{ route('frontend.berita') }}" class="berita-index-cta-button">
+                Lihat Semua Berita
+            </a>
+        </div>
+    </div>
+</section>
+
+
 
     <section class="mengapa-section" id="mengapa">
         <div class="mengapa-container">
@@ -2602,118 +2538,94 @@
     </section>
 
     <section class="capaian-section" id="capaian">
-        <div class="capaian-container">
-            <!-- Header -->
-            <div class="capaian-header">
-                <span class="capaian-badge">Latest Updates</span>
-                <h2 class="capaian-title">KARYA & PRESTASI</h2>
-                <div class="capaian-view-all">
-                    <a href="#" class="capaian-view-link">
-                        SEE ALL KARYA
-                        <span class="capaian-arrow">→</span>
-                    </a>
+    <div class="capaian-container">
+
+        <div class="capaian-header">
+            <span class="capaian-badge">Latest Updates</span>
+            <h2 class="capaian-title">KARYA & PRESTASI</h2>
+
+            <div class="capaian-view-all">
+                <a href="{{ route('frontend.karya') }}" class="capaian-view-link">
+                    SEE ALL KARYA <span class="capaian-arrow">→</span>
+                </a>
+            </div>
+
+            <div class="capaian-view-all">
+                <a href="{{ route('frontend.berita') }}" class="capaian-view-link">
+                    SEE ALL PRESTASI <span class="capaian-arrow">→</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="capaian-grid">
+
+            {{-- CARD BESAR – PRESTASI --}}
+            @if($prestasiUtama)
+            <div class="capaian-card capaian-large">
+                <div class="capaian-image-wrapper">
+                    <img src="{{ asset('storage/' . ($prestasiUtama->galeri->gambar ?? 'default.jpg')) }}"
+                         alt="{{ $prestasiUtama->judul }}"
+                         class="capaian-image">
+
+                    <div class="capaian-overlay">
+                        <div class="capaian-badge-small">Prestasi</div>
+                    </div>
                 </div>
 
-                <div class="capaian-view-all">
-                    <a href="#" class="capaian-view-link">
-                        SEE ALL PRESTASI
-                        <span class="capaian-arrow">→</span>
+                <div class="capaian-content">
+                    <span class="capaian-date">
+                        {{ $prestasiUtama->created_at->format('d/m/Y') }}
+                    </span>
+
+                    <h3 class="capaian-card-title">
+                        {{ $prestasiUtama->judul }}
+                    </h3>
+
+                    <a href="{{ route('frontend.single-berita', $prestasiUtama->slug) }}"
+                       class="capaian-read-more">
+                        Selengkapnya →
                     </a>
                 </div>
             </div>
-    
-            <!-- Grid Layout -->
-            <div class="capaian-grid">
-                <!-- Large Featured Card -->
-                <div class="capaian-card capaian-large">
+            @endif
+
+            {{-- CARD KECIL – KARYA --}}
+            <div class="capaian-small-grid">
+                @foreach($karyas as $karya)
+                <div class="capaian-card capaian-small">
                     <div class="capaian-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=300&fit=crop" 
-                             alt="Request For Progress" 
+                        <img src="{{ asset('storage/' . ($karya->cover_image->gambar ?? 'default.jpg')) }}"
+                             alt="{{ $karya->judul }}"
                              class="capaian-image">
+
                         <div class="capaian-overlay">
                             <div class="capaian-badge-small">Karya</div>
                         </div>
                     </div>
+
                     <div class="capaian-content">
-                        <span class="capaian-date">04/05/2025</span>
-                        <h3 class="capaian-card-title">Request For Progress Canteen Vendor 2019-2020</h3>
-                        <a href="#" class="capaian-read-more">Selengkapnya →</a>
+                        <span class="capaian-date">
+                            {{ \Carbon\Carbon::parse($karya->tanggal)->format('d/m/Y') }}
+                        </span>
+
+                        <h3 class="capaian-card-title">
+                            {{ $karya->judul }}
+                        </h3>
+
+                        <a href="{{ route('frontend.single-karya', $karya->id) }}"
+                           class="capaian-read-more">
+                            Selengkapnya →
+                        </a>
                     </div>
                 </div>
-    
-                <!-- Small Cards Grid -->
-                <div class="capaian-small-grid">
-                    <!-- Card 1 -->
-                    <div class="capaian-card capaian-small">
-                        <div class="capaian-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=300&fit=crop" 
-                                 alt="Grade 11 Kupang" 
-                                 class="capaian-image">
-                            <div class="capaian-overlay">
-                                <div class="capaian-badge-small">Prestasi</div>
-                            </div>
-                        </div>
-                        <div class="capaian-content">
-                            <span class="capaian-date">02/05/2025</span>
-                            <h3 class="capaian-card-title">Grade 11 Kupang CAS Trip</h3>
-                            <a href="#" class="capaian-read-more">Selengkapnya →</a>
-                        </div>
-                    </div>
-    
-                    <!-- Card 2 -->
-                    <div class="capaian-card capaian-small">
-                        <div class="capaian-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=300&fit=crop" 
-                                 alt="Grade 3 Learning" 
-                                 class="capaian-image">
-                            <div class="capaian-overlay">
-                                <div class="capaian-badge-small">Karya</div>
-                            </div>
-                        </div>
-                        <div class="capaian-content">
-                            <span class="capaian-date">29/04/2025</span>
-                            <h3 class="capaian-card-title">Grade 3 Learning Journey to Rumah Keramik</h3>
-                            <a href="#" class="capaian-read-more">Selengkapnya →</a>
-                        </div>
-                    </div>
-    
-                    <!-- Card 3 -->
-                    <div class="capaian-card capaian-small">
-                        <div class="capaian-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop" 
-                                 alt="Grade 2 Learning" 
-                                 class="capaian-image">
-                            <div class="capaian-overlay">
-                                <div class="capaian-badge-small">Prestasi</div>
-                            </div>
-                        </div>
-                        <div class="capaian-content">
-                            <span class="capaian-date">26/04/2025</span>
-                            <h3 class="capaian-card-title">Grade 2 Learning Journey to Taman Budaya Sen...</h3>
-                            <a href="#" class="capaian-read-more">Selengkapnya →</a>
-                        </div>
-                    </div>
-    
-                    <!-- Card 4 -->
-                    <div class="capaian-card capaian-small">
-                        <div class="capaian-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop" 
-                                 alt="Grade 1 Learning" 
-                                 class="capaian-image">
-                            <div class="capaian-overlay">
-                                <div class="capaian-badge-small">Karya</div>
-                            </div>
-                        </div>
-                        <div class="capaian-content">
-                            <span class="capaian-date">25/04/2025</span>
-                            <h3 class="capaian-card-title">Grade 1 Learning Journey to Taman Budaya Sent...</h3>
-                            <a href="#" class="capaian-read-more">Selengkapnya →</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <!-- Footer -->
     <footer class="footer">
