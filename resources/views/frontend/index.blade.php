@@ -2249,10 +2249,10 @@
             </div>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="menu-gw">Beranda</a></li>
                 <li><a href="#about" class="menu-gw">Informasi</a></li>
                 <li><a href="#programs" class="menu-gw">Struktur Organisasi</a></li>
                 <li><a href="{{ url('/berita') }}" class="menu-gw">Berita</a></li>
+                <li><a href="{{ url('/karya') }}" class="menu-gw">Karya</a></li>
                 <li><a href="#contact" class="menu-gw">Galeri</a></li>
                 <li><a href="#contact" class="menu-gw">SPMB</a></li>
                 <li><a href="#login" class="login-btn">Login Admin</a></li>

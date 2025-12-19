@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GaleriController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\KaryaController;
 use App\Http\Controllers\Admin\SambutanController;
+use App\Http\Controllers\Admin\SPMBController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\EkstrakurikulerController;
 use App\Http\Controllers\Admin\OsisController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\OsisFrontendController;
 use App\Http\Controllers\Frontend\EkstrakurikulerFrontendController;
 use App\Http\Controllers\Frontend\LokasiFrontendController;
+use App\Http\Controllers\Frontend\SPMBFrontendController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -55,6 +57,9 @@ Route::get('/osis', [OsisFrontendController::class, 'index'])->name('osis.index'
 
 // Guru Frontend
 Route::get('/guru', [GuruFrontendController::class, 'index'])->name('guru.index');
+
+// SPMB
+Route::get('/spmb', [SPMBFrontendController::class, 'index'])->name('spmb');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -106,6 +111,11 @@ Route::middleware('auth')->group(function () {
             Route::get('sambutan', [SambutanController::class, 'index'])->name('sambutan.index');
             Route::get('sambutan/edit', [SambutanController::class, 'edit'])->name('sambutan.edit');
             Route::put('sambutan', [SambutanController::class, 'update'])->name('sambutan.update');
+
+            // SPMB
+            Route::get('spmb', [SPMBController::class, 'index'])->name('spmb.index');
+            Route::get('spmb/{id}/edit', [SPMBController::class, 'edit'])->name('spmb.edit');
+            Route::put('spmb/{id}', [SPMBController::class, 'update'])->name('spmb.update');
 
     });
 require __DIR__.'/auth.php';

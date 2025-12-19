@@ -441,10 +441,6 @@
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 20px;
-    }
-
     .single-karya-image-section {
         padding: 20px 15px;
     }

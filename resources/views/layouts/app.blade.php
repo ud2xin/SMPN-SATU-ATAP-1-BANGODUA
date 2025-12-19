@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/single-karya.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/karya.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/pagination.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/spmb.css') }}">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -42,6 +43,7 @@
         <script src="{{ asset('assets/js/berita.js') }}"></script>
         <script src="{{ asset('assets/js/single-berita.js') }}"></script>
         <script src="{{ asset('assets/js/single-karya.js') }}"></script>
+        <script src="{{ asset('assets/js/spmb.js') }}"></script>
         @stack('scripts')
     </body>
 </html>

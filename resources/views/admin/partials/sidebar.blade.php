@@ -92,13 +92,6 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Ppdb</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Struktur</span>
         </a>
     </li>
@@ -114,6 +107,13 @@
         <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
             <i class="fas fa-fw fa-calendar-alt"></i>
             <span>Osis</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/spmb') }}">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span>SPMB</span>
         </a>
     </li>
 

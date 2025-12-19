@@ -1,0 +1,273 @@
+.spmb-section{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    min-height:calc(100vh - 80px); /* Kurangi tinggi navbar */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    width:100%;
+    box-sizing:border-box;
+    margin-top: 80px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.spmb-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    max-width:1200px;
+    width:100%;
+    background:rgba(255,255,255,.95);
+    border-radius:20px;
+    padding:60px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+    animation:spmb-fadeInUp 0.8s ease-out;
+    box-sizing:border-box;
+}
+
+/* ANIMASI CONTAINER */
+@keyframes spmb-fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px)
+    }
+    to{
+        opacity:1;
+        transform:translateY(0)
+    }
+}
+
+.spmb-image-wrapper{
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.2);
+    cursor:pointer;
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+    animation:spmb-slideInLeft 0.8s ease-out 0.2s backwards
+}
+
+/* ANIMASI IMAGE SECTION */
+@keyframes spmb-slideInLeft{
+    from{
+        opacity:0;
+        transform:translateX(-50px)
+    }
+    to{
+        opacity:1;
+        transform:translateX(0)
+    }
+}
+
+.spmb-image-wrapper:hover{
+    transform:scale(1.05) translateY(-5px);
+    box-shadow:0 15px 50px rgba(0,0,0,.3)
+}
+
+.spmb-image-wrapper img{
+    width:100%;
+    display:block;
+    transition:transform 0.4s ease
+}
+
+.spmb-image-wrapper:hover img{
+    transform:scale(1.1)
+}
+
+/* ANIMASI CONTENT SECTION */
+.spmb-content-section{
+    animation:spmb-slideInRight 0.8s ease-out 0.4s backwards
+}
+
+@keyframes spmb-slideInRight{
+    from{
+        opacity:0;
+        transform:translateX(50px)
+    }
+    to{
+        opacity:1;
+        transform:translateX(0)
+    }
+}
+
+.spmb-title{
+    font-size:2.5em;
+    font-weight:bold;
+    margin-bottom:20px;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:spmb-fadeIn 1s ease-out 0.6s backwards
+}
+
+@keyframes spmb-fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+/* PERBAIKAN: Reset style untuk konten dari Summernote */
+.spmb-description-content{
+    animation:spmb-fadeIn 1s ease-out 0.8s backwards
+}
+
+.spmb-description-content p{
+    font-size:1.1em;
+    line-height:1.8;
+    color:#555;
+    margin-bottom:15px;
+}
+
+/* Override inline styles jika diperlukan */
+.spmb-description-content p[style]{
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif !important;
+    background-color:transparent !important;
+}
+
+.spmb-tag{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:#fff;
+    padding:8px 18px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+    transition:all 0.3s ease;
+    animation:spmb-bounceIn 0.6s ease-out 1s backwards;
+    position:relative;
+    overflow:hidden
+}
+
+@keyframes spmb-bounceIn{
+    0%{
+        opacity:0;
+        transform:scale(0.3)
+    }
+    50%{
+        transform:scale(1.05)
+    }
+    70%{
+        transform:scale(0.9)
+    }
+    100%{
+        opacity:1;
+        transform:scale(1)
+    }
+}
+
+.spmb-tag::before{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.3);
+    transform:translate(-50%,-50%);
+    transition:width 0.6s, height 0.6s
+}
+
+.spmb-tag:hover::before{
+    width:300px;
+    height:300px
+}
+
+.spmb-tag:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(102,126,234,.4)
+}
+
+.spmb-placeholder{
+    background:linear-gradient(90deg,#e0e0e0 25%,#f0f0f0 50%,#e0e0e0 75%);
+    background-size:200% 100%;
+    width:100%;
+    height:400px;
+    border-radius:15px;
+    animation:spmb-shimmer 2s infinite, spmb-slideInLeft 0.8s ease-out 0.2s backwards
+}
+
+@keyframes spmb-shimmer{
+    0%{background-position:200% 0}
+    100%{background-position:-200% 0}
+}
+
+@media(max-width:768px){
+    .spmb-section{
+        padding:20px;
+        min-height:auto;
+    }
+    .spmb-container{
+        grid-template-columns:1fr;
+        padding:30px;
+    }
+    .spmb-title{
+        font-size:2em;
+    }
+}
+
+/* MODAL */
+.spmb-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    z-index:9999; /* Pastikan di atas navbar */
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transition:opacity 0.3s ease
+}
+
+.spmb-modal.spmb-active{
+    display:flex;
+    animation:spmb-fadeInModal 0.3s ease-out forwards
+}
+
+@keyframes spmb-fadeInModal{
+    to{opacity:1}
+}
+
+.spmb-modal img{
+    max-width:90%;
+    max-height:90vh;
+    border-radius:10px;
+    transform:scale(0.8);
+    animation:spmb-zoomIn 0.4s ease-out forwards
+}
+
+@keyframes spmb-zoomIn{
+    to{transform:scale(1)}
+}
+
+.spmb-modal-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:24px;
+    border:none;
+    cursor:pointer;
+    background:rgba(255,255,255,.9);
+    transition:all 0.3s ease;
+    animation:spmb-rotateIn 0.5s ease-out 0.2s backwards
+}
+
+@keyframes spmb-rotateIn{
+    from{
+        opacity:0;
+        transform:rotate(-180deg) scale(0)
+    }
+    to{
+        opacity:1;
+        transform:rotate(0) scale(1)
+    }
+}
+
+.spmb-modal-close:hover{
+    background:#fff;
+    transform:rotate(90deg);
+    box-shadow:0 5px 15px rgba(0,0,0,.3)
+}
