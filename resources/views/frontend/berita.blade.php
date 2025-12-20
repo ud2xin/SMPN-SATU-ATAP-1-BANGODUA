@@ -24,7 +24,17 @@
 
                             <div class="news-meta">
                                 <span>📅 {{ $berita->created_at->format('d F Y') }}</span>
-                                <span>📂 {{ ucfirst($berita->kategori) }}</span>
+                                <span>
+                                    @if ($berita->kategori === 'prestasi')
+                                        🟢
+                                    @elseif ($berita->kategori === 'berita')
+                                        🟡
+                                    @else
+                                        ⚪
+                                    @endif
+                                    {{ ucfirst($berita->kategori) }}
+                                </span>
+
                             </div>
 
                             <p class="news-excerpt">

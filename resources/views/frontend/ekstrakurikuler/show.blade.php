@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-8 sm:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen overflow-hidden">
+    <div class="margin-gw py-8 sm:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Back Button with Animation -->

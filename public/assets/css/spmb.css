@@ -94,7 +94,7 @@
     font-size:2.5em;
     font-weight:bold;
     margin-bottom:20px;
-    background:linear-gradient(135deg,#667eea,#764ba2);
+    background: linear-gradient(135deg, #08239c 0%, #5189c8 100%);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
@@ -125,7 +125,7 @@
 }
 
 .spmb-tag{
-    background:linear-gradient(135deg,#667eea,#764ba2);
+    background: linear-gradient(135deg, #08239c 0%, #5189c8 100%);
     color:#fff;
     padding:8px 18px;
     border-radius:20px;

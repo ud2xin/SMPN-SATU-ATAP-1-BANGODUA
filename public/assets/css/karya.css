@@ -13,14 +13,14 @@
 }
 
 .karya-header h1 {
-    color: white;
+    color: #1e40af;
     font-size: 3em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .karya-header p {
-    color: rgba(255,255,255,0.95);
+    color: rgba(0, 0, 0, 0.95);
     font-size: 1.2em;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .karya-filter-btn:hover, .karya-filter-btn.karya-active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #08239c 0%, #5189c8 100%);
     color: white;
     transform: scale(1.05);
 }
@@ -151,7 +151,7 @@
 }
 
 .karya-category {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, #08239c 0%, #5189c8 100%);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;

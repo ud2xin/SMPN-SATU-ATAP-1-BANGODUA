@@ -2,8 +2,8 @@
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <div class="logo-section">
-            <div class="logo">🎓</div>
-            <span class="school-name">SMA Negeri 1</span>
+        <img src="{{ asset('assets/img/Logo Satap.png') }}" alt="Logo SMA Negeri 1" class="logo">
+            <span class="school-name">SMP NEGERI SATU ATAP 1 BANGODUA</span>
         </div>
 
         <div class="hamburger" id="hamburger">
@@ -13,14 +13,24 @@
         </div>
 
         <ul class="nav-menu" id="navMenu">
-            <li><a href="{{ route('frontend.berita') }}">Berita</a></li>
-            <li><a href="">Galeri</a></li>
-            <li><a href="{{ route('frontend.karya') }}">Karya</a></li>
-            <li><a href="#contact">Kontak</a></li>
-
-            {{-- Jika mau dibuat link login Laravel --}}
-            {{-- <li><a href="{{ route('login') }}" class="login-btn">Login Admin</a></li> --}}
-            
+            <li class="dropdown">
+                <a href="#" class="menu-gw">Informasi <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('/lokasi') }}">Lokasi</a></li>
+                    <li><a href="{{ url('/tentang') }}">Sejarah & Visi Misi</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="menu-gw">Struktur Organisasi <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('/osis') }}">Osis</a></li>
+                    <li><a href="{{ url('/guru') }}">Guru dan Staff</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url('/berita') }}" class="menu-gw">Berita</a></li>
+            <li><a href="{{ url('/karya') }}" class="menu-gw">Karya</a></li>
+            <li><a href="{{ url('/galeri') }}" class="menu-gw">Galeri</a></li>
+            <li><a href="{{ url('/spmb') }}" class="menu-gw">SPMB</a></li>
             <li><a href="#login" class="login-btn">Login Admin</a></li>
         </ul>
     </div>

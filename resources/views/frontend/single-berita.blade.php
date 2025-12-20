@@ -19,7 +19,7 @@
 
             <div class="single-berita-meta">
                 <span class="single-berita-author">
-                    Oleh: {{ $berita->penulis ?? 'Admin' }}
+                Oleh: Admin {{ $berita->user->name ?? 'Admin' }}
                 </span> | 
                 <span class="single-berita-date">
                     {{ $berita->created_at->translatedFormat('d F Y') }}

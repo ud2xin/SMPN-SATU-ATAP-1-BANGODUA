@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="py-8 sm:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen overflow-hidden relative">
+    <div class="margin-gw py-8 sm:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen overflow-hidden relative">
         <!-- Animated Background Shapes -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute top-20 left-10 w-32 h-32 sm:w-72 sm:h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>

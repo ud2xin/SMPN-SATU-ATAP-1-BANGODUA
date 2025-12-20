@@ -4,10 +4,37 @@ hamburger.addEventListener('click', function() {
     navMenu.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
+// **PERBAIKAN: Mobile Dropdown Toggle - Letakkan SEBELUM navLinks**
+const dropdowns = document.querySelectorAll('.dropdown > a');
+
+dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); // Mencegah link dari navigasi di mobile
+            e.stopPropagation(); // Mencegah event bubbling
+            
+            const parent = this.parentElement;
+            parent.classList.toggle('active');
+            
+            // Close other dropdowns
+            dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.parentElement.classList.remove('active');
+                }
+            });
+        }
+    });
+});
+
+// Close menu when clicking on a link (TAPI TIDAK untuk dropdown parent)
 const navLinks = document.querySelectorAll('.nav-menu a');
 navLinks.forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
+        // Jangan tutup menu jika yang diklik adalah dropdown parent di mobile
+        if (window.innerWidth <= 768 && this.parentElement.classList.contains('dropdown')) {
+            return; // Skip, biarkan dropdown toggle handler yang menangani
+        }
+        
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     });
