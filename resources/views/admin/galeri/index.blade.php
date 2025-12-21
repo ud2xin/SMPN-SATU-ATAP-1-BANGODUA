@@ -214,13 +214,24 @@
             </div>
 
             <!-- Pagination -->
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <div class="text-muted small">
-                    Menampilkan {{ $galeri->firstItem() ?? 0 }} - {{ $galeri->lastItem() ?? 0 }}
-                    dari {{ $galeri->total() }} foto
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
+                <div class="text-sm text-gray-500">
+                    Menampilkan
+                    <span class="font-medium text-gray-700">
+                        {{ $galeri->firstItem() ?? 0 }}
+                    </span>
+                    –
+                    <span class="font-medium text-gray-700">
+                        {{ $galeri->lastItem() ?? 0 }}
+                    </span>
+                    dari
+                    <span class="font-medium text-gray-700">
+                        {{ $galeri->total() }}
+                    </span>
+                    foto
                 </div>
                 <div>
-                    {{ $galeri->links() }}
+                    {{ $galeri->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>
