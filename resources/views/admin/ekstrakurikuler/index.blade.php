@@ -241,7 +241,6 @@
             </div>
 
             <!-- Pagination -->
-            @if ($ekstrakurikuler->hasPages())
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
                     <div class="text-sm text-gray-500">
                         Menampilkan
@@ -262,7 +261,6 @@
                         {{ $ekstrakurikuler->onEachSide(1)->links() }}
                     </div>
                 </div>
-            @endif
         </div>
     </div>
 
