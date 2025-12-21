@@ -238,13 +238,24 @@
             </div>
 
             <!-- Pagination -->
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <div class="text-muted small">
-                    Menampilkan {{ $osis->firstItem() ?? 0 }} - {{ $osis->lastItem() ?? 0 }}
-                    dari {{ $osis->total() }} anggota
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
+                <div class="text-sm text-gray-500">
+                    Menampilkan
+                    <span class="font-medium text-gray-700">
+                        {{ $osis->firstItem() ?? 0 }}
+                    </span>
+                    –
+                    <span class="font-medium text-gray-700">
+                        {{ $osis->lastItem() ?? 0 }}
+                    </span>
+                    dari
+                    <span class="font-medium text-gray-700">
+                        {{ $osis->total() }}
+                    </span>
+                    anggota
                 </div>
                 <div>
-                    {{ $osis->links() }}
+                    {{ $osis->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>
