@@ -339,6 +339,7 @@ padding 0.3s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
     line-height: 1.2;
+    text-decoration: none;
 }
 
 .navbar.scrolled .school-name {
@@ -422,7 +423,7 @@ padding 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .navbar.scrolled .menu-gw {
@@ -2519,7 +2520,7 @@ opacity: 1;
         <div class="nav-container">
             <div class="logo-section">
                 <img src="{{ asset('assets/img/Logo Satap.png') }}" alt="Logo SMPN Satu Atap 1" class="logo">
-                <span class="school-name">SMP NEGERI SATU ATAP 1 BANGODUA</span>
+                <a href="{{ url('/') }}" class="school-name">SMP NEGERI SATU ATAP 1 BANGODUA</a>
             </div>
             
             <div class="hamburger" id="hamburger">
@@ -2545,9 +2546,10 @@ opacity: 1;
                 </li>
                 <li><a href="{{ url('/berita') }}" class="menu-gw">Berita</a></li>
                 <li><a href="{{ url('/karya') }}" class="menu-gw">Karya</a></li>
-                <li><a href="#contact" class="menu-gw">Galeri</a></li>
+                <li><a href="{{ url('/galeri') }}" class="menu-gw">Galeri</a></li>
+                <li><a href="{{ url('/ekstrakurikuler') }}" class="menu-gw">Ekstrakurikuler</a></li>
                 <li><a href="{{ url('/spmb') }}" class="menu-gw">SPMB</a></li>
-                <li><a href="#login" class="login-btn">Login Admin</a></li>
+                <li><a href="{{ url('/login') }}" class="login-btn">Login Admin</a></li>
             </ul>
         </div>
     </nav>
@@ -2833,7 +2835,7 @@ opacity: 1;
     <div class="capaian-container">
 
         <div class="capaian-header">
-            <span class="capaian-badge">Latest Updates</span>
+            <span class="capaian-badge">Update Terbaru</span>
             <h2 class="capaian-title">KARYA & PRESTASI</h2>
 
             <div class="capaian-view-all">

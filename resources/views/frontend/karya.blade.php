@@ -59,9 +59,9 @@
                         </a>
                     </h3>
 
-
+                    {{-- FIX: Strip HTML tags dan batasi karakter --}}
                     <p class="karya-description">
-                        {{ Str::limit(strip_tags($karya->deskripsi), 160) }}
+                        {{ Str::limit(strip_tags(filled($karya->konten) ? $karya->konten : $karya->deskripsi), 150) }}
                     </p>
 
                     <div class="karya-meta">
@@ -77,11 +77,41 @@
 
     </div>
 
-    {{-- PAGINATION --}}
-    <div class="mt-6">
-        {{ $karyas->links() }}
+    {{-- CUSTOM PAGINATION --}}
+    @if($karyas->hasPages())
+    <div class="pagination-container">
+        {{-- Tombol Previous --}}
+        @if($karyas->onFirstPage())
+            <button class="pagination-btn" id="prevBtn" disabled>← Sebelumnya</button>
+        @else
+            <a href="{{ $karyas->previousPageUrl() }}&kategori={{ $kategori }}" class="pagination-btn" id="prevBtn">← Sebelumnya</a>
+        @endif
+
+        {{-- Container untuk nomor halaman yang akan di-generate --}}
+        <div id="pageNumbers"></div>
+
+        {{-- Tombol Next --}}
+        @if($karyas->hasMorePages())
+            <a href="{{ $karyas->nextPageUrl() }}&kategori={{ $kategori }}" class="pagination-btn" id="nextBtn">Selanjutnya →</a>
+        @else
+            <button class="pagination-btn" id="nextBtn" disabled>Selanjutnya →</button>
+        @endif
     </div>
+    @endif
 
 </div>
+
+{{-- Data pagination untuk JavaScript --}}
+<script>
+    window.paginationData = {
+        currentPage: {{ $karyas->currentPage() }},
+        lastPage: {{ $karyas->lastPage() }},
+        baseUrl: "{{ $karyas->url(1) }}",
+        kategori: "{{ $kategori }}"
+    };
+</script>
+
+{{-- Include file pagination.js --}}
+<script src="{{ asset('js/berita.js') }}"></script>
 
 @endsection

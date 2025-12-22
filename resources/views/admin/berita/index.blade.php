@@ -152,9 +152,52 @@
                     </tbody>
                 </table>
 
-                <div class="d-flex justify-content-end">
-                    {{ $berita->links() }}
+                {{-- Simple Pagination --}}
+                @if($berita->hasPages())
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="text-muted">
+                        Menampilkan {{ $berita->firstItem() }} - {{ $berita->lastItem() }} dari {{ $berita->total() }} berita
+                    </div>
+                    <nav>
+                        <ul class="pagination mb-0">
+                            {{-- Previous Button --}}
+                            @if($berita->onFirstPage())
+                                <li class="page-item disabled">
+                                    <span class="page-link">‹ Sebelumnya</span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $berita->previousPageUrl() }}">‹ Sebelumnya</a>
+                                </li>
+                            @endif
+
+                            {{-- Page Numbers --}}
+                            @foreach(range(1, $berita->lastPage()) as $page)
+                                @if($page == $berita->currentPage())
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ $page }}</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $berita->url($page) }}">{{ $page }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                            {{-- Next Button --}}
+                            @if($berita->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $berita->nextPageUrl() }}">Selanjutnya ›</a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">Selanjutnya ›</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
                 </div>
+                @endif
 
             </div>
         </div>

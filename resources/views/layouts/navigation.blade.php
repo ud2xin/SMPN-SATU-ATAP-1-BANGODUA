@@ -3,7 +3,7 @@
     <div class="nav-container">
         <div class="logo-section">
         <img src="{{ asset('assets/img/Logo Satap.png') }}" alt="Logo SMA Negeri 1" class="logo">
-            <span class="school-name">SMP NEGERI SATU ATAP 1 BANGODUA</span>
+            <a href="{{ url('/') }}" class="school-name">SMP NEGERI SATU ATAP 1 BANGODUA</a>
         </div>
 
         <div class="hamburger" id="hamburger">
@@ -30,8 +30,9 @@
             <li><a href="{{ url('/berita') }}" class="menu-gw">Berita</a></li>
             <li><a href="{{ url('/karya') }}" class="menu-gw">Karya</a></li>
             <li><a href="{{ url('/galeri') }}" class="menu-gw">Galeri</a></li>
+            <li><a href="{{ url('/ekstrakurikuler') }}" class="menu-gw">Ekstrakurikuler</a></li>
             <li><a href="{{ url('/spmb') }}" class="menu-gw">SPMB</a></li>
-            <li><a href="#login" class="login-btn">Login Admin</a></li>
+            <li><a href="{{ url('/login') }}" class="login-btn">Login Admin</a></li>
         </ul>
     </div>
 </nav>

@@ -213,27 +213,53 @@
                 </table>
             </div>
 
-            <!-- Pagination -->
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
-                <div class="text-sm text-gray-500">
-                    Menampilkan
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->firstItem() ?? 0 }}
-                    </span>
-                    –
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->lastItem() ?? 0 }}
-                    </span>
-                    dari
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->total() }}
-                    </span>
-                    foto
+            {{-- Simple Pagination --}}
+            @if($galeri->hasPages())
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="text-muted">
+                    Menampilkan {{ $galeri->firstItem() }} - {{ $galeri->lastItem() }} dari {{ $galeri->total() }} foto
                 </div>
-                <div>
-                    {{ $galeri->onEachSide(1)->links() }}
-                </div>
+                <nav>
+                    <ul class="pagination mb-0">
+                        {{-- Previous Button --}}
+                        @if($galeri->onFirstPage())
+                            <li class="page-item disabled">
+                                <span class="page-link">‹ Sebelumnya</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $galeri->previousPageUrl() }}">‹ Sebelumnya</a>
+                            </li>
+                        @endif
+
+                        {{-- Page Numbers --}}
+                        @foreach(range(1, $galeri->lastPage()) as $page)
+                            @if($page == $galeri->currentPage())
+                                <li class="page-item active">
+                                    <span class="page-link">{{ $page }}</span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $galeri->url($page) }}">{{ $page }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+
+                        {{-- Next Button --}}
+                        @if($galeri->hasMorePages())
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $galeri->nextPageUrl() }}">Selanjutnya ›</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled">
+                                <span class="page-link">Selanjutnya ›</span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
             </div>
+            @endif
+
         </div>
     </div>
 

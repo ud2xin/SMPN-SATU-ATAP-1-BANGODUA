@@ -162,6 +162,7 @@ body {
 .nav-menu li:nth-child(5) { animation-delay: 0.9s; }
 .nav-menu li:nth-child(6) { animation-delay: 1.1s; }
 .nav-menu li:nth-child(7) { animation-delay: 1.3s; }
+.nav-menu li:nth-child(8) { animation-delay: 1.5s; }
 
 .nav-menu a {
     color: #ffffff;
@@ -173,7 +174,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .nav-menu a:hover {
@@ -237,18 +238,21 @@ body {
 }
 
 .login-btn {
-    background: #000000;
-    padding: 0.7rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 600;
+    background: white;
+    color: #667eea !important;
+    padding: 0.7rem 1.5rem !important;
+    border-radius: 25px !important;
+    font-weight: bold !important;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     text-shadow: none;
+    text-decoration: none;
 }
 
 .login-btn:hover {
     transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5) !important;
+    color: white !important;
 }
 
 /* Content Area */
