@@ -13,7 +13,10 @@ class KaryaController extends Controller
 {
     public function index()
     {
-        $karyas = Karya::with(['user', 'gambar1', 'gambar2', 'gambar3'])->latest()->get();
+        $karyas = Karya::with(['user', 'gambar1', 'gambar2', 'gambar3'])
+        ->latest()
+        ->paginate(10);
+
         return view('admin.karya.index', compact('karyas'));
     }
 

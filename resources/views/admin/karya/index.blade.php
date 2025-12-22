@@ -64,5 +64,21 @@
             @endforelse
         </tbody>
     </table>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+        <div class="text-muted small">
+            Menampilkan
+            <strong>{{ $karyas->firstItem() ?? 0 }}</strong>
+            –
+            <strong>{{ $karyas->lastItem() ?? 0 }}</strong>
+            dari
+            <strong>{{ $karyas->total() }}</strong>
+            karya
+        </div>
+        <div>
+            {{ $karyas->onEachSide(1)->links() }}
+        </div>
+    </div>
 </div>
 @endsection

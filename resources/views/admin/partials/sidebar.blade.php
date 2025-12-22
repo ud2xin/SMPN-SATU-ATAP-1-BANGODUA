@@ -55,68 +55,36 @@
 
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/berita') }}">
-            <i class="fas fa-fw fa-images"></i>
+            <i class="fas fa-fw fa-newspaper"></i>
             <span>Berita</span>
         </a>
     </li>
 
-    <!-- Nav Item - Kegiatan -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/hero') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
+            <i class="fas fa-fw fa-image"></i>
             <span>Hero</span>
         </a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/sambutan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
+            <i class="fas fa-fw fa-user-tie"></i>
             <span>Sambutan</span>
         </a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/karya') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
+            <i class="fas fa-fw fa-palette"></i>
             <span>Karya</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Guru</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Struktur</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Lokasi</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/kegiatan') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Osis</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin/spmb') }}">
-            <i class="fas fa-fw fa-calendar-alt"></i>
+            <i class="fas fa-fw fa-user-graduate"></i>
             <span>SPMB</span>
         </a>
     </li>
-
-
-
 </ul>
