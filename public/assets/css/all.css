@@ -492,7 +492,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
@@ -502,27 +502,6 @@ body {
     margin: 0;
     color: #b8c6db;
     font-size: 0.9rem;
-}
-
-.footer-bottom-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.footer-bottom-links a {
-    color: #b8c6db;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-}
-
-.footer-bottom-links a:hover {
-    color: #fff;
-}
-
-.footer-bottom-links span {
-    color: rgba(255, 255, 255, 0.3);
 }
 
 /* ========== RESPONSIVE STYLES ========== */

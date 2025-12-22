@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Dashboard Admin' }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/Logo Satap.png') }}">
 
     <!-- SB Admin 2 CSS -->
     <link href="{{ asset('sbadmin2/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">

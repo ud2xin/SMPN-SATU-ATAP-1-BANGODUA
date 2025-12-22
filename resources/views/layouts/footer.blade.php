@@ -47,10 +47,8 @@
                 <h4 class="footer-heading">Menu Cepat</h4>
                 <ul class="footer-links">
                     <li><a href="#">Profil Sekolah</a></li>
-                    <li><a href="#">Visi & Misi</a></li>
                     <li><a href="#">Struktur Organisasi</a></li>
-                    <li><a href="#">Fasilitas</a></li>
-                    <li><a href="#">Prestasi</a></li>
+                    <li><a href="#">Berita Sekolah</a></li>
                     <li><a href="#">Galeri</a></li>
                 </ul>
             </div>
@@ -59,12 +57,9 @@
             <div class="footer-col">
                 <h4 class="footer-heading">Informasi</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Berita Sekolah</a></li>
-                    <li><a href="#">Kalender Akademik</a></li>
+                    <li><a href="#">Visi & Misi</a></li>
                     <li><a href="#">PPDB</a></li>
-                    <li><a href="#">Download</a></li>
-                    <li><a href="#">Kontak</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Prestasi</a></li>
                 </ul>
             </div>
 
@@ -105,11 +100,6 @@
     <div class="footer-bottom">
         <div class="footer-bottom-content">
             <p>&copy; {{ date('Y') }} SMP Negeri Satu Atap 1 Bangodua. All Rights Reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Kebijakan Privasi</a>
-                <span>|</span>
-                <a href="#">Syarat & Ketentuan</a>
-            </div>
         </div>
     </div>
 </footer>
