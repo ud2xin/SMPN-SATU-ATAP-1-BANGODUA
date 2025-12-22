@@ -1,3 +1,103 @@
+/* ===== FIX UTAMA - Tambahkan ini ke CSS Anda ===== */
+
+/* Card harus punya tinggi konsisten */
+.karya-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* PENTING: buat card sama tinggi */
+}
+
+.karya-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Isi sisa ruang */
+}
+
+/* FIX DESKRIPSI - Batasi tinggi dan tambah ellipsis */
+.karya-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    
+    /* INI YANG PENTING - Batasi tinggi */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Maksimal 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.8em; /* 3 baris x 1.6 line-height */
+}
+
+/* Judul juga perlu dibatasi */
+.karya-title {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    
+    /* Batasi judul jadi 2 baris */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    max-height: 2.6em;
+}
+
+.karya-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.karya-title a:hover {
+    color: #4facfe;
+}
+
+/* Meta harus selalu di bawah */
+.karya-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: auto; /* Dorong ke bawah */
+}
+
+/* Student info juga perlu dibatasi */
+.karya-student-details {
+    flex: 1;
+    overflow: hidden;
+}
+
+.karya-student-details h4 {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.karya-student-class {
+    color: #888;
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== COPY SEMUA CSS INI UNTUK MENGGANTI YANG LAMA ===== */
+
 .karya-container {
     max-width: 1200px;
     margin-top: 140px;
@@ -43,6 +143,7 @@
     font-size: 1em;
     transition: all 0.3s ease;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .karya-filter-btn:hover, .karya-filter-btn.karya-active {
@@ -65,6 +166,9 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .karya-card:hover {
@@ -78,6 +182,7 @@
     position: relative;
     overflow: hidden;
     background: #f0f0f0;
+    flex-shrink: 0;
 }
 
 .karya-image img {
@@ -93,6 +198,9 @@
 
 .karya-content {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .karya-student-info {
@@ -117,15 +225,26 @@
     object-fit: cover;
 }
 
+.karya-student-details {
+    flex: 1;
+    overflow: hidden;
+}
+
 .karya-student-details h4 {
     color: #333;
     font-size: 1.1em;
     margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .karya-student-class {
     color: #888;
     font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .karya-title {
@@ -133,6 +252,23 @@
     color: #333;
     margin-bottom: 10px;
     font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    max-height: 2.6em;
+}
+
+.karya-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.karya-title a:hover {
+    color: #4facfe;
 }
 
 .karya-description {
@@ -140,6 +276,12 @@
     line-height: 1.6;
     margin-bottom: 15px;
     font-size: 0.95em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.8em;
 }
 
 .karya-meta {
@@ -148,6 +290,7 @@
     align-items: center;
     padding-top: 15px;
     border-top: 1px solid #eee;
+    margin-top: auto;
 }
 
 .karya-category {
@@ -202,5 +345,10 @@
 
     .karya-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .karya-container {
+        margin-top: 100px;
+        padding: 0 15px;
     }
 }

@@ -227,7 +227,47 @@
                 <div>
                     {{ $galeri->onEachSide(1)->links() }}
                 </div>
+                <nav>
+                    <ul class="pagination mb-0">
+                        {{-- Previous Button --}}
+                        @if($galeri->onFirstPage())
+                            <li class="page-item disabled">
+                                <span class="page-link">‹ Sebelumnya</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $galeri->previousPageUrl() }}">‹ Sebelumnya</a>
+                            </li>
+                        @endif
+
+                        {{-- Page Numbers --}}
+                        @foreach(range(1, $galeri->lastPage()) as $page)
+                            @if($page == $galeri->currentPage())
+                                <li class="page-item active">
+                                    <span class="page-link">{{ $page }}</span>
+                                </li>
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $galeri->url($page) }}">{{ $page }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+
+                        {{-- Next Button --}}
+                        @if($galeri->hasMorePages())
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $galeri->nextPageUrl() }}">Selanjutnya ›</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled">
+                                <span class="page-link">Selanjutnya ›</span>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
             </div>
+            @endif
+
         </div>
     </div>
 

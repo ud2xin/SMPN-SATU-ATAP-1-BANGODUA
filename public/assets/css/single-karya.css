@@ -287,14 +287,15 @@
 
 .single-karya-related-header h2 {
     font-size: 2em;
-    color: white;
+    color: #1e40af;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .single-karya-related-header p {
-    color: rgba(255,255,255,0.95);
+    color: black;
     font-size: 1.1em;
+    transition: 0.3s;;
 }
 
 .single-karya-related-grid {
@@ -378,6 +379,11 @@
     color: #333;
     margin-bottom: 10px;
     font-weight: 600;
+    transition: 0.3s;
+}
+
+.single-karya-related-content h3:hover {
+    color: #4facfe;
 }
 
 .single-karya-related-content p {

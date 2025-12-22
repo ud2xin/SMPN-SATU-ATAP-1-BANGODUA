@@ -85,7 +85,7 @@
                     <h3>Deskripsi Karya</h3>
 
                     <div class="single-karya-description">
-                        {!! $karya->deskripsi !!}
+                        {!! filled($karya->konten) ? $karya->konten : $karya->deskripsi !!}
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
     <div class="single-karya-related-section">
 
         <div class="single-karya-related-header">
-            <h2>Karya Terkait Lainnya</h2>
+            <h2>📚 Karya Terkait Lainnya</h2>
             <p>Karya lainnya yang mungkin Anda sukai</p>
         </div>
 
@@ -141,7 +141,7 @@
 
                             {{-- Title & Desc --}}
                             <h3>{{ $rel->judul }}</h3>
-                            <p>{{ Str::limit($rel->deskripsi, 80) }}</p>
+                            <p>{{ Str::limit(strip_tags($rel->konten), 80) }}</p>
 
                             <div class="single-karya-related-meta">
                                 <span class="single-karya-related-category">

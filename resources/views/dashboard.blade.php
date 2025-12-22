@@ -1,17 +1,38 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.sbadmin')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+@section('content')
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-tachometer-alt mr-2"></i>Dashboard Admin
+        </h1>
+        <span class="d-none d-sm-inline-block badge badge-primary badge-lg">
+            <i class="far fa-clock mr-1"></i>{{ now()->format('d M Y, H:i') }}
+        </span>
+    </div>
+
+    <!-- Welcome Card -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="h5 mb-0 font-weight-bold text-primary">
+                                Selamat datang, {{ auth()->user()->name }}! 👋
+                            </div>
+                            <div class="text-xs mt-2 text-gray-600">
+                                Anda login sebagai <span class="badge badge-info">Administrator</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-shield fa-3x text-gray-300"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
