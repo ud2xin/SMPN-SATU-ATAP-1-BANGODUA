@@ -126,11 +126,11 @@
                             <td class="align-middle">
                                 <div class="gallery-preview">
                                     <img src="{{ asset('storage/'.$g->gambar) }}"
-                                         class="img-thumbnail shadow-sm"
-                                         width="80"
-                                         style="cursor: pointer; object-fit: cover; height: 80px;"
-                                         data-toggle="modal"
-                                         data-target="#previewModal{{ $g->id }}">
+                                            class="img-thumbnail shadow-sm"
+                                            width="80"
+                                            style="cursor: pointer; object-fit: cover; height: 80px;"
+                                            data-toggle="modal"
+                                            data-target="#previewModal{{ $g->id }}">
                                 </div>
                             </td>
                             <td class="align-middle font-weight-bold">{{ $g->judul }}</td>
@@ -156,15 +156,15 @@
                             <td class="align-middle text-center">
                                 <div class="btn-group" role="group">
                                     <a href="{{ route('admin.galeri.edit', $g->id) }}"
-                                       class="btn btn-warning btn-sm"
-                                       data-toggle="tooltip"
-                                       title="Edit Foto">
+                                        class="btn btn-warning btn-sm"
+                                        data-toggle="tooltip"
+                                        title="Edit Foto">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
                                     <form action="{{ route('admin.galeri.destroy', $g->id) }}"
-                                          method="POST"
-                                          class="d-inline">
+                                            method="POST"
+                                            class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('Yakin ingin menghapus foto ini?\n\nJudul: {{ $g->judul }}')"
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="modal-body text-center">
                                         <img src="{{ asset('storage/'.$g->gambar) }}"
-                                             class="img-fluid rounded shadow">
+                                                class="img-fluid rounded shadow">
                                         @if($g->deskripsi)
                                             <p class="mt-3 text-muted">{{ $g->deskripsi }}</p>
                                         @endif
@@ -214,20 +214,14 @@
             </div>
 
             <!-- Pagination -->
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6">
-                <div class="text-sm text-gray-500">
+            <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+                <div class="text-muted small">
                     Menampilkan
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->firstItem() ?? 0 }}
-                    </span>
+                    <strong>{{ $galeri->firstItem() ?? 0 }}</strong>
                     –
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->lastItem() ?? 0 }}
-                    </span>
+                    <strong>{{ $galeri->lastItem() ?? 0 }}</strong>
                     dari
-                    <span class="font-medium text-gray-700">
-                        {{ $galeri->total() }}
-                    </span>
+                    <strong>{{ $galeri->total() }}</strong>
                     foto
                 </div>
                 <div>

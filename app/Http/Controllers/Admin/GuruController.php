@@ -13,7 +13,9 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $guru = Guru::orderByRaw('COALESCE(urut, 9999), nama')->get();
+        $guru = Guru::orderByRaw('COALESCE(urut, 9999), nama')
+                ->paginate(10);
+
         return view('admin.guru.index', compact('guru'));
     }
 

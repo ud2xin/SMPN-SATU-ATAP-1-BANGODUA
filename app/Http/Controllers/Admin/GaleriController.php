@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
+
 class GaleriController extends Controller
 {
     public function index()
     {
-        $galeri = Galeri::orderBy('id', 'asc')->paginate(12);
+        $galeri = Galeri::orderBy('id', 'asc')->paginate(10);
         return view('admin.galeri.index', compact('galeri'));
     }
 

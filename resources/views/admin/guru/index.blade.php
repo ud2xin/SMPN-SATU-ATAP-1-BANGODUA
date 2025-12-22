@@ -223,6 +223,22 @@
                         @endforelse
                     </tbody>
                 </table>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-2">
+                    <div class="text-muted small">
+                        Menampilkan
+                        <strong>{{ $guru->firstItem() ?? 0 }}</strong>
+                        –
+                        <strong>{{ $guru->lastItem() ?? 0 }}</strong>
+                        dari
+                        <strong>{{ $guru->total() }}</strong>
+                        guru
+                    </div>
+                    <div>
+                        {{ $guru->onEachSide(1)->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
