@@ -1248,6 +1248,7 @@ opacity: 1;
     font-weight: 700;
     line-height: 1.4;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .berita-index-card:hover .berita-index-card-title {
@@ -2711,11 +2712,11 @@ opacity: 1;
                         <div class="berita-index-content">
                             <span class="berita-index-time">
                                 {{ $berita->created_at->diffForHumans() }}
-                            </span>
+                            </span><br>
 
-                            <h3 class="berita-index-card-title">
+                            <a href="{{ route('frontend.single-berita', $berita->slug) }}" class="berita-index-card-title">
                                 {{ $berita->judul }}
-                            </h3>
+                            </a>
 
                             <p class="berita-index-description">
                                 {{ Str::limit(strip_tags($berita->konten), 120) }}
@@ -2837,6 +2838,11 @@ opacity: 1;
         <div class="capaian-header">
             <span class="capaian-badge">Update Terbaru</span>
             <h2 class="capaian-title">KARYA & PRESTASI</h2>
+
+            <div class="capaian-view-all">
+                <a href="{{ route('frontend.karya') }}" class="capaian-view-link">
+                </a>
+            </div>
 
             <div class="capaian-view-all">
                 <a href="{{ route('frontend.karya') }}" class="capaian-view-link">
@@ -3291,8 +3297,21 @@ opacity: 1;
                     }
 
                     const cardWidth = beritaCards[0].offsetWidth;
-                    const gap = 30;
-                    const offset = -(currentIndex * cardsPerView * (cardWidth + gap));
+                    const gap = 25;
+                    let offset;
+        
+                    // PERBAIKAN: Bedakan perhitungan untuk mobile dan desktop
+                    if (window.innerWidth <= 768) {
+                        // MOBILE: Geser 1 kartu per slide
+                        const gap = 20;
+                        offset = -(currentIndex * (cardWidth + gap));
+                    } else if (window.innerWidth <= 1200) {
+                        // TABLET: Geser 2 kartu per slide
+                        offset = -(currentIndex * 2 * (cardWidth + gap));
+                    } else {
+                        // DESKTOP: Geser 3 kartu per slide
+                        offset = -(currentIndex * 3 * (cardWidth + gap));
+                    }
                     
                     beritaTrack.style.transform = `translateX(${offset}px)`;
 

@@ -1,160 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        /* Animasi Keyframes */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes expandWidth {
-            from {
-                transform: scaleX(0);
-            }
-            to {
-                transform: scaleX(1);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Initial Hidden State */
-        .animate-on-scroll {
-            opacity: 0;
-        }
-
-        /* Animasi Classes */
-        .animate-fadeInDown {
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .animate-fadeInUp.animated {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .animate-scaleIn.animated {
-            animation: scaleIn 0.6s ease-out forwards;
-        }
-
-        .animate-fadeIn {
-            animation: fadeIn 1s ease-out;
-        }
-
-        .animate-expandWidth.animated {
-            animation: expandWidth 1s ease-out forwards;
-        }
-
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-slideInUp {
-            animation: slideInUp 0.5s ease-out;
-        }
-
-        .animate-bounce-slow {
-            animation: bounce 2s infinite;
-        }
-
-        .animate-pulse-slow {
-            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        .animate-gradient {
-            background-size: 200% 200%;
-            animation: gradient 3s ease infinite;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Responsif Image Loading */
-        img {
-            image-rendering: -webkit-optimize-contrast;
-        }
-
-        /* Reduce motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
-
     <div class="margin-gw py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -191,11 +37,11 @@
             @endphp
 
             @foreach($groupedOsis as $urut => $members)
-                <div class="mb-16 animate-on-scroll animate-fadeInUp" data-delay="{{ $loop->index * 100 }}">
+                <div class="mb-16 animate-fadeInUp" style="animation-delay: {{ $loop->index * 0.1 }}s;">
                     <!-- Level Indicator -->
                     <div class="flex items-center justify-center mb-8">
                         <div class="flex-grow h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent
-                            animate-on-scroll animate-expandWidth" data-delay="{{ $loop->index * 100 }}"></div>
+                            animate-expandWidth"></div>
                         <div class="px-4 sm:px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full
                             shadow-lg mx-2 sm:mx-4 transform hover:scale-110 transition-transform duration-300">
                             <span class="text-white font-semibold text-sm sm:text-base">
@@ -203,7 +49,7 @@
                             </span>
                         </div>
                         <div class="flex-grow h-px bg-gradient-to-r from-transparent via-indigo-300 to-transparent
-                            animate-on-scroll animate-expandWidth" data-delay="{{ $loop->index * 100 }}"></div>
+                            animate-expandWidth"></div>
                     </div>
 
                     <!-- Members Grid - Dinamis berdasarkan jumlah -->
@@ -222,8 +68,8 @@
                         @foreach($members as $member)
                             <div class="group relative bg-white rounded-3xl shadow-lg overflow-hidden
                                 transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-3
-                                animate-on-scroll animate-scaleIn cursor-pointer"
-                                data-delay="{{ ($loop->parent->index * 100) + ($loop->index * 100) }}">
+                                animate-scaleIn cursor-pointer"
+                                style="animation-delay: {{ $loop->index * 0.1 }}s;">
                                 
                                 <!-- Image Container - Diperbesar untuk efek lonjong -->
                                 <div class="relative h-80 sm:h-96 lg:h-[28rem] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
@@ -311,128 +157,143 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Intersection Observer untuk animasi scroll
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const delay = element.getAttribute('data-delay') || 0;
-                        
-                        setTimeout(() => {
-                            element.classList.add('animated');
-                            element.style.opacity = '1';
-                        }, delay);
-                        
-                        // Unobserve after animation to improve performance
-                        observer.unobserve(element);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe semua elemen dengan animasi scroll
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(el => observer.observe(el));
-
-            // Add ripple effect on card click
-            const cards = document.querySelectorAll('.group.relative.bg-white');
-            cards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-
-                    ripple.style.cssText = `
-                        position: absolute;
-                        border-radius: 50%;
-                        background: rgba(99, 102, 241, 0.3);
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        transform: scale(0);
-                        animation: ripple 0.6s ease-out;
-                        pointer-events: none;
-                        z-index: 50;
-                    `;
-
-                    this.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                });
-            });
-
-            // Parallax effect on scroll (optional, desktop only)
-            if (window.innerWidth > 768) {
-                let ticking = false;
-                
-                window.addEventListener('scroll', function() {
-                    if (!ticking) {
-                        window.requestAnimationFrame(function() {
-                            const scrolled = window.pageYOffset;
-                            const parallaxCards = document.querySelectorAll('.group.relative.bg-white');
-
-                            parallaxCards.forEach((card, index) => {
-                                const speed = 0.02;
-                                const offset = scrolled * speed * (index % 2 === 0 ? 1 : -1);
-                                card.style.transform = `translateY(${offset}px)`;
-                            });
-
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                });
+    <style>
+        /* Animasi Keyframes */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
             }
-
-            // Lazy loading images with fade-in effect
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-
-                            if (!img.complete) {
-                                img.style.opacity = '0';
-                                img.style.transition = 'opacity 0.5s ease-in-out';
-
-                                img.addEventListener('load', () => {
-                                    img.style.opacity = '1';
-                                }, { once: true });
-                            } else {
-                                img.style.opacity = '1';
-                            }
-
-                            imageObserver.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px'
-                });
-
-                lazyImages.forEach(img => imageObserver.observe(img));
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-        });
+        }
 
-        // Add ripple animation to styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-        `;
-        document.head.appendChild(style);
-    </script>
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Animasi Classes */
+        .animate-fadeInDown {
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-expandWidth {
+            animation: expandWidth 1s ease-out;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-slideInUp {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsif Image Loading */
+        img {
+            image-rendering: -webkit-optimize-contrast;
+        }
+    </style>
 @endsection
