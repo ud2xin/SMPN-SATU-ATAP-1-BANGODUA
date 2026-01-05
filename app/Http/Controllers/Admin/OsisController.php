@@ -12,7 +12,7 @@ class OsisController extends Controller
     public function index()
     {
         // pakai pagination agar pada view kita bisa pakai links()
-        $osis = Osis::orderBy('urut')->paginate(10);
+        $osis = Osis::orderBy('urut')->paginate(5);
         return view('admin.osis.index', compact('osis'));
     }
 

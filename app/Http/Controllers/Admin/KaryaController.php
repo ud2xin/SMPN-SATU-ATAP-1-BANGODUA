@@ -15,7 +15,7 @@ class KaryaController extends Controller
     {
         $karyas = Karya::with(['user', 'gambar1', 'gambar2', 'gambar3'])
         ->latest()
-        ->paginate(10);
+        ->paginate(5);
 
         return view('admin.karya.index', compact('karyas'));
     }
